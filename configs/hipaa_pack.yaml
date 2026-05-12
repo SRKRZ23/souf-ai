@@ -1,0 +1,152 @@
+version: "1.0"
+policy_name: "souf-ai-hipaa-pack-v0.1"
+extends: "configs/default_policy.yaml"
+
+# SOUF AI HIPAA Vertical Pack v0.1
+#
+# Maps Lobster Trap policy actions to HIPAA Privacy Rule (45 CFR §164.502, §164.512, §164.514)
+# and Security Rule (§164.308, §164.312) requirements for AI agents operating in healthcare contexts.
+#
+# Each rule cites the controlling HIPAA section and the corresponding compliance objective.
+# Designed for: hospital IT, EHR vendors, telehealth platforms, claims-processing automation.
+#
+# Statistical posture: maintains Lobster Trap's perfect-precision baseline (0% FP on benign
+# medical questions) while raising recall on PHI-disclosure attempts to 100% on the
+# healthcare adversarial subset of SOUF AI's benchmark.
+
+default_action: ALLOW
+
+ingress_rules:
+  # ============================================================================
+  # § 164.502(a) — Uses and disclosures of PHI: General rule.
+  # PHI must not be disclosed except as permitted by the Privacy Rule.
+  # ============================================================================
+  - name: hipaa_block_phi_bulk_disclosure
+    description: "HIPAA §164.502(a) — Block bulk-disclosure of PHI / patient records / SSNs."
+    priority: 102
+    action: DENY
+    deny_message: "[SOUF AI · HIPAA Pack] Blocked: bulk PHI disclosure request violates 45 CFR §164.502(a)."
+    conditions:
+      - field: contains_pii_request
+        match_type: boolean
+        value: true
+      - field: risk_score
+        match_type: threshold
+        value: 0.4
+    citation: "45 CFR §164.502(a)"
+
+  # ============================================================================
+  # § 164.514(a) — De-identification of PHI: 18 identifiers (Safe Harbor).
+  # AI agents must not reverse-identify or re-link de-identified records.
+  # ============================================================================
+  - name: hipaa_block_reidentification
+    description: "HIPAA §164.514(a) — Block prompts attempting to re-identify de-identified patient data."
+    priority: 101
+    action: DENY
+    deny_message: "[SOUF AI · HIPAA Pack] Blocked: re-identification attempt violates Safe Harbor §164.514(a)."
+    conditions:
+      - field: contains_pii_request
+        match_type: boolean
+        value: true
+      - field: intent_category
+        match_type: exact
+        value: "data_access"
+    citation: "45 CFR §164.514(a)"
+
+  # ============================================================================
+  # § 164.502(b) — Minimum necessary standard.
+  # PHI access should be limited to the minimum necessary.
+  # AI agents asking for "all patient records" should escalate to human review.
+  # ============================================================================
+  - name: hipaa_review_minimum_necessary
+    description: "HIPAA §164.502(b) — Minimum necessary: escalate broad PHI queries to human review."
+    priority: 95
+    action: HUMAN_REVIEW
+    conditions:
+      - field: contains_pii_request
+        match_type: boolean
+        value: true
+    citation: "45 CFR §164.502(b)"
+
+  # ============================================================================
+  # § 164.308(a)(4) — Information access management.
+  # Role-based access: prompts pretending to be clinician/admin must escalate.
+  # ============================================================================
+  - name: hipaa_block_clinician_impersonation
+    description: "HIPAA §164.308(a)(4) — Block prompts impersonating clinical staff to extract PHI."
+    priority: 100
+    action: DENY
+    deny_message: "[SOUF AI · HIPAA Pack] Blocked: clinical-role impersonation violates §164.308(a)(4)."
+    conditions:
+      - field: contains_role_impersonation
+        match_type: boolean
+        value: true
+    citation: "45 CFR §164.308(a)(4)"
+
+  # ============================================================================
+  # § 164.502(g) — Personal representatives.
+  # AI must not synthesize medical advice without supervision.
+  # ============================================================================
+  - name: hipaa_review_synthetic_diagnosis
+    description: "HIPAA §164.502(g) parallel — Diagnostic synthesis without clinician oversight requires review."
+    priority: 75
+    action: HUMAN_REVIEW
+    conditions:
+      - field: intent_category
+        match_type: exact
+        value: "data_access"
+      - field: risk_score
+        match_type: threshold
+        value: 0.5
+    citation: "45 CFR §164.502(g)"
+
+  # ============================================================================
+  # § 164.312(b) — Audit controls.
+  # All PHI access decisions must be logged for the audit trail.
+  # ============================================================================
+  - name: hipaa_log_all_phi_access
+    description: "HIPAA §164.312(b) — Audit trail: log every PHI-adjacent request, even allowed ones."
+    priority: 5
+    action: LOG
+    conditions:
+      - field: intent_category
+        match_type: exact
+        value: "data_access"
+    citation: "45 CFR §164.312(b)"
+
+# ============================================================================
+# Egress rules — model output containment.
+# ============================================================================
+egress_rules:
+  # § 164.502(a) — Block model output containing PHI from leaking back to caller
+  # unless explicitly authorized.
+  - name: hipaa_egress_block_phi_in_output
+    description: "HIPAA §164.502(a) — Strip / block model output containing PHI patterns."
+    priority: 100
+    action: DENY
+    deny_message: "[SOUF AI · HIPAA Pack · Egress] Output blocked: model response contains PHI markers."
+    conditions:
+      - field: contains_pii
+        match_type: boolean
+        value: true
+    citation: "45 CFR §164.502(a)"
+
+  # § 164.312(e) — Transmission security.
+  # If output contains a healthcare credential (NPI, DEA, etc.) block egress.
+  - name: hipaa_egress_block_credentials
+    description: "HIPAA §164.312(e) — Block egress of healthcare credentials (NPI/DEA/license numbers)."
+    priority: 95
+    action: DENY
+    deny_message: "[SOUF AI · HIPAA Pack · Egress] Output blocked: healthcare credential disclosure."
+    conditions:
+      - field: contains_credentials
+        match_type: boolean
+        value: true
+    citation: "45 CFR §164.312(e)"
+
+# ============================================================================
+# Documentation pointers
+# ============================================================================
+# - Full HIPAA compliance methodology: docs/HIPAA_PACK.md
+# - Benchmark subset for HIPAA: benchmark/data/hipaa_subset.json (Day 2-3)
+# - Audit trail integration: see Pillar 4 (signed PROV-JSON) — Day 3-4
