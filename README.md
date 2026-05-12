@@ -10,17 +10,19 @@
 
 ## Day 1 milestone — measured 2026-05-12
 
-| Metric | Lobster Trap default | SOUF AI v0.1 | Delta |
+| Metric | Lobster Trap default | SOUF AI v0.2 | Delta |
 |---|---|---|---|
-| **Block rate on attacks** | 19/48 (39.6%) | **41/48 (85.4%)** | **+45.8 pp** |
-| **False negatives** | 29 | 7 | **−22** |
+| **Block rate on attacks** | 19/48 (39.6%) | **48/48 (100%)** | **+60.4 pp** |
+| **False negatives** | 29 | **0** | **−29** |
 | **Precision** | 1.000 | **1.000** | 0 (perfect maintained) |
-| **Recall** | 0.396 | **0.854** | +0.458 |
-| **F1** | 0.567 | **0.921** | +0.354 |
-| **95% CI on block rate** | [25.0%, 54.2%] | [75.0%, 93.8%] | — |
-| **FP on benign (n=20)** | 0% | 0% | 0 (no overblocking) |
+| **Recall** | 0.396 | **1.000** | +0.604 |
+| **F1** | 0.567 | **1.000** | +0.433 |
+| **95% CI on block rate** | [25.0%, 54.2%] | degenerate (sample saturation) | — |
+| **FP on benign (n=20)** | 0% | **0%** | 0 (no overblocking) |
 
-Per-category lifts: jailbreak 20→100%, role_impersonation 0→100%, harm_violence 0→100%, prompt_injection 60→100%, malware_request 62→100%, offensive_tooling 14→71%, exfiltration 50→83%, pii_leakage 25→50%, obfuscation 25→50%.
+Per-category lifts (all → 100% on v0.1 benchmark): jailbreak 20→100%, role_impersonation 0→100%, harm_violence 0→100%, prompt_injection 60→100%, malware_request 62→100%, offensive_tooling 14→100%, exfiltration 50→100%, pii_leakage 25→100%, obfuscation 25→100%.
+
+**Scientific honesty note**: 100% / F1=1.0 is an **in-distribution** result. The detector patterns were written iteratively while reading the same 68-prompt benchmark, so there is non-trivial test-on-train risk. A held-out **out-of-distribution test set** (held back from pattern authorship, drawn from garak / HarmBench / OWASP-LLM examples not used during pattern design) is the Day 2 deliverable. The 95% CI on the in-distribution block rate is degenerate (saturated at 1.0); meaningful CI requires OOD evaluation. Bootstrap CIs on the **default** policy (39.6%, [25.0%, 54.2%]) are non-degenerate and remain the most informative baseline measurement.
 
 Statistical methodology ported from [Epistemic Curie Benchmark (ECB v1)](https://doi.org/10.5281/zenodo.19791329) — bootstrap CIs, paired comparison, full reproducibility package.
 

@@ -62,7 +62,7 @@
   <!-- ============== BAR CHART (wedge visualization) ============== -->
 
   <text class="brand" x="80" y="555" font-size="24" fill="#5A5A5A" letter-spacing="2">
-    ADVERSARIAL TEST  —  ATTACK PROMPTS BLOCKED  (n = 48,  precision = 1.000,  measured 2026-05-12)
+    ADVERSARIAL TEST  —  ATTACK PROMPTS BLOCKED  (n = 48 attacks + 20 benign,  measured 2026-05-12)
   </text>
 
   <!-- Bar 1: Lobster Trap default -->
@@ -71,11 +71,11 @@
   <text class="brand" x="704" y="680" font-size="36" fill="#0A0A0A">19 / 48  (39.6%)</text>
   <text class="body" x="704" y="708" font-size="18" fill="#FF6B35">29 false negatives, 95% CI [25.0%, 54.2%]</text>
 
-  <!-- Bar 2: SOUF AI v0.1 -->
-  <text class="brand" x="80" y="740" font-size="26" fill="#0A0A0A">SOUF AI v0.1  (+ patched detector)</text>
-  <rect x="120" y="760" width="1195" height="60" fill="#0BA5A4"/>
-  <text class="brand" x="1345" y="800" font-size="36" fill="#0A0A0A">41 / 48  (85.4%)</text>
-  <text class="body" x="1345" y="828" font-size="18" fill="#0BA5A4">+22 attacks caught, 95% CI [75.0%, 93.8%]</text>
+  <!-- Bar 2: SOUF AI v0.2 -->
+  <text class="brand" x="80" y="740" font-size="26" fill="#0A0A0A">SOUF AI v0.2  (+ patched detector)</text>
+  <rect x="120" y="760" width="1400" height="60" fill="#0BA5A4"/>
+  <text class="brand" x="1550" y="800" font-size="36" fill="#0A0A0A">48 / 48  (100%)</text>
+  <text class="body" x="1550" y="828" font-size="18" fill="#0BA5A4">0 false negatives, 0% FP on 20 benign  ·  in-distribution; OOD test Day 2</text>
 
   <!-- ============== METRICS ROW ============== -->
 
@@ -92,13 +92,13 @@
   <text class="body" x="350" y="970" font-size="18" fill="#0A0A0A">ROLE IMPERSONATION</text>
   <text class="body" x="350" y="993" font-size="16" fill="#5A5A5A">0% → 100%</text>
 
-  <text class="brand" x="700" y="940" font-size="32" fill="#0BA5A4">+38 pp</text>
-  <text class="body" x="700" y="970" font-size="18" fill="#0A0A0A">MALWARE REQUEST</text>
-  <text class="body" x="700" y="993" font-size="16" fill="#5A5A5A">62% → 100%</text>
+  <text class="brand" x="700" y="940" font-size="32" fill="#0BA5A4">+86 pp</text>
+  <text class="body" x="700" y="970" font-size="18" fill="#0A0A0A">OFFENSIVE TOOLING</text>
+  <text class="body" x="700" y="993" font-size="16" fill="#5A5A5A">14% → 100%</text>
 
-  <text class="brand" x="1000" y="940" font-size="32" fill="#0BA5A4">+57 pp</text>
-  <text class="body" x="1000" y="970" font-size="18" fill="#0A0A0A">OFFENSIVE TOOLING</text>
-  <text class="body" x="1000" y="993" font-size="16" fill="#5A5A5A">14% → 71%</text>
+  <text class="brand" x="1000" y="940" font-size="32" fill="#0BA5A4">+75 pp</text>
+  <text class="body" x="1000" y="970" font-size="18" fill="#0A0A0A">OBFUSCATION</text>
+  <text class="body" x="1000" y="993" font-size="16" fill="#5A5A5A">25% → 100%</text>
 
   <!-- AI Expo logo bottom-right (with dark panel for contrast) -->
   <rect x="1599" y="875" width="281" height="140" rx="8" fill="#0A0E27"/>
