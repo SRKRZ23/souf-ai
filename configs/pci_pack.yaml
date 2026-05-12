@@ -1,0 +1,156 @@
+version: "1.0"
+policy_name: "souf-ai-pci-pack-v0.1"
+extends: "configs/default_policy.yaml"
+
+# SOUF AI PCI-DSS Vertical Pack v0.1
+#
+# Maps Lobster Trap policy actions to PCI-DSS 4.0.1 (2024) requirements for AI
+# agents operating in payment-card-data environments.
+#
+# Each rule cites the controlling PCI-DSS requirement and the corresponding
+# compliance objective.
+#
+# Designed for: payment processors, e-commerce platforms, fintech LLM agents,
+# call-center automation handling cardholder data, fraud-detection ML systems.
+
+default_action: ALLOW
+
+ingress_rules:
+  # ============================================================================
+  # PCI-DSS 4.0.1 Requirement 3 — Protect stored account data.
+  # 3.3 Sensitive authentication data (SAD) must not be stored or transmitted in
+  # plaintext post-authorization. AI agents must not output PAN / CVV / track.
+  # ============================================================================
+  - name: pci_block_pan_disclosure_request
+    description: "PCI-DSS Req 3.3 — Block prompts asking the model to repeat / output / list cardholder data."
+    priority: 102
+    action: DENY
+    deny_message: "[SOUF AI · PCI Pack] Blocked: request for cardholder data (PAN / CVV / track) violates Req 3.3."
+    conditions:
+      - field: contains_pii_request
+        match_type: boolean
+        value: true
+      - field: risk_score
+        match_type: threshold
+        value: 0.4
+    citation: "PCI-DSS 4.0.1 Req 3.3"
+
+  # 3.5 Primary Account Number (PAN) must be rendered unreadable when stored.
+  - name: pci_block_pan_in_ingress
+    description: "PCI-DSS Req 3.5 — Block ingress prompts containing visible PAN strings."
+    priority: 101
+    action: DENY
+    deny_message: "[SOUF AI · PCI Pack] Blocked: ingress prompt contains visible PAN — violates Req 3.5."
+    conditions:
+      - field: contains_pii
+        match_type: boolean
+        value: true
+    citation: "PCI-DSS 4.0.1 Req 3.5"
+
+  # ============================================================================
+  # Req 4 — Protect cardholder data with strong cryptography during transmission.
+  # AI agents must not be instructed to send card data over unencrypted channels.
+  # ============================================================================
+  - name: pci_block_pan_exfiltration
+    description: "PCI-DSS Req 4.2 — Block prompts asking to transmit cardholder data to external destinations."
+    priority: 100
+    action: DENY
+    deny_message: "[SOUF AI · PCI Pack] Blocked: cardholder-data exfiltration violates Req 4.2."
+    conditions:
+      - field: contains_exfiltration
+        match_type: boolean
+        value: true
+    citation: "PCI-DSS 4.0.1 Req 4.2"
+
+  # ============================================================================
+  # Req 7 — Restrict access to system components and cardholder data by need-to-know.
+  # AI agents must not perform bulk-scan / bulk-export of cardholder records.
+  # ============================================================================
+  - name: pci_review_bulk_account_query
+    description: "PCI-DSS Req 7.2 — Bulk cardholder-data queries require role-based authorization → HUMAN_REVIEW."
+    priority: 80
+    action: HUMAN_REVIEW
+    conditions:
+      - field: contains_pii_request
+        match_type: boolean
+        value: true
+      - field: intent_category
+        match_type: exact
+        value: "data_access"
+    citation: "PCI-DSS 4.0.1 Req 7.2"
+
+  # ============================================================================
+  # Req 8 — Identify users and authenticate access to system components.
+  # AI agents must not assume privileged roles without authentication.
+  # ============================================================================
+  - name: pci_block_admin_pretense
+    description: "PCI-DSS Req 8.3 — Block role-impersonation attempts in payment contexts."
+    priority: 95
+    action: DENY
+    deny_message: "[SOUF AI · PCI Pack] Blocked: privileged-role impersonation violates Req 8.3."
+    conditions:
+      - field: contains_role_impersonation
+        match_type: boolean
+        value: true
+    citation: "PCI-DSS 4.0.1 Req 8.3"
+
+  # ============================================================================
+  # Req 10 — Track and monitor all access to system components and cardholder data.
+  # ============================================================================
+  - name: pci_log_all_data_access
+    description: "PCI-DSS Req 10.2 — Audit trail: log every data_access request."
+    priority: 5
+    action: LOG
+    conditions:
+      - field: intent_category
+        match_type: exact
+        value: "data_access"
+    citation: "PCI-DSS 4.0.1 Req 10.2"
+
+  # ============================================================================
+  # Req 11 — Test security of systems and networks regularly.
+  # AI must not be used as a launch platform for vulnerability scanning of in-scope assets.
+  # ============================================================================
+  - name: pci_block_internal_vuln_scan
+    description: "PCI-DSS Req 11.4 — Block AI-driven vulnerability scanning of in-scope environment."
+    priority: 90
+    action: DENY
+    deny_message: "[SOUF AI · PCI Pack] Blocked: unauthorized vulnerability scan violates Req 11.4."
+    conditions:
+      - field: contains_malware_request
+        match_type: boolean
+        value: true
+    citation: "PCI-DSS 4.0.1 Req 11.4"
+
+# ============================================================================
+# Egress rules.
+# ============================================================================
+egress_rules:
+  - name: pci_egress_block_pan_in_output
+    description: "PCI-DSS Req 3.5 — Block model output that contains a Primary Account Number pattern."
+    priority: 100
+    action: DENY
+    deny_message: "[SOUF AI · PCI Pack · Egress] Output blocked: response contains PAN-like pattern."
+    conditions:
+      - field: contains_pii
+        match_type: boolean
+        value: true
+    citation: "PCI-DSS 4.0.1 Req 3.5"
+
+  - name: pci_egress_block_credentials
+    description: "PCI-DSS Req 8.6 — Block egress of API keys / payment-API credentials."
+    priority: 95
+    action: DENY
+    deny_message: "[SOUF AI · PCI Pack · Egress] Output blocked: payment-API credential disclosure."
+    conditions:
+      - field: contains_credentials
+        match_type: boolean
+        value: true
+    citation: "PCI-DSS 4.0.1 Req 8.6"
+
+# ============================================================================
+# Documentation pointers
+# ============================================================================
+# - Full PCI-DSS methodology: docs/PCI_PACK.md (Day 2)
+# - PCI subset of benchmark:  benchmark/data/pci_subset.json (Day 2)
+# - Audit chain integration:  see Pillar 4 (signed PROV-JSON) — Day 3-4
