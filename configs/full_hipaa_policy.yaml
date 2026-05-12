@@ -3,12 +3,12 @@ policy_name: souf-ai-hipaa-pack-v0.1+souf-ai-hipaa-pack-v0.1
 default_action: ALLOW
 ingress_rules:
 - name: hipaa_block_phi_bulk_disclosure
-  description: "HIPAA \xA7164.502(a) \u2014 Block bulk-disclosure of PHI / patient\
-    \ records / SSNs."
+  description: HIPAA §164.502(a) — Block bulk-disclosure of PHI / patient records
+    / SSNs.
   priority: 102
   action: DENY
-  deny_message: "[SOUF AI \xB7 HIPAA Pack] Blocked: bulk PHI disclosure request violates\
-    \ 45 CFR \xA7164.502(a)."
+  deny_message: '[SOUF AI · HIPAA Pack] Blocked: bulk PHI disclosure request violates
+    45 CFR §164.502(a).'
   conditions:
   - field: contains_pii_request
     match_type: boolean
@@ -17,12 +17,12 @@ ingress_rules:
     match_type: threshold
     value: 0.4
 - name: hipaa_block_reidentification
-  description: "HIPAA \xA7164.514(a) \u2014 Block prompts attempting to re-identify\
-    \ de-identified patient data."
+  description: HIPAA §164.514(a) — Block prompts attempting to re-identify de-identified
+    patient data.
   priority: 101
   action: DENY
-  deny_message: "[SOUF AI \xB7 HIPAA Pack] Blocked: re-identification attempt violates\
-    \ Safe Harbor \xA7164.514(a)."
+  deny_message: '[SOUF AI · HIPAA Pack] Blocked: re-identification attempt violates
+    Safe Harbor §164.514(a).'
   conditions:
   - field: contains_pii_request
     match_type: boolean
@@ -40,12 +40,12 @@ ingress_rules:
     match_type: boolean
     value: true
 - name: hipaa_block_clinician_impersonation
-  description: "HIPAA \xA7164.308(a)(4) \u2014 Block prompts impersonating clinical\
-    \ staff to extract PHI."
+  description: HIPAA §164.308(a)(4) — Block prompts impersonating clinical staff to
+    extract PHI.
   priority: 100
   action: DENY
-  deny_message: "[SOUF AI \xB7 HIPAA Pack] Blocked: clinical-role impersonation violates\
-    \ \xA7164.308(a)(4)."
+  deny_message: '[SOUF AI · HIPAA Pack] Blocked: clinical-role impersonation violates
+    §164.308(a)(4).'
   conditions:
   - field: contains_role_impersonation
     match_type: boolean
@@ -69,8 +69,8 @@ ingress_rules:
     match_type: boolean
     value: true
 - name: hipaa_review_minimum_necessary
-  description: "HIPAA \xA7164.502(b) \u2014 Minimum necessary: escalate broad PHI\
-    \ queries to human review."
+  description: 'HIPAA §164.502(b) — Minimum necessary: escalate broad PHI queries
+    to human review.'
   priority: 95
   action: HUMAN_REVIEW
   conditions:
@@ -131,6 +131,9 @@ ingress_rules:
   - field: contains_pii_request
     match_type: boolean
     value: true
+  - field: risk_score
+    match_type: threshold
+    value: 0.35
 - name: block_dangerous_commands
   description: Dangerous system commands detected
   priority: 80
@@ -144,8 +147,8 @@ ingress_rules:
     match_type: threshold
     value: 0.3
 - name: hipaa_review_synthetic_diagnosis
-  description: "HIPAA \xA7164.502(g) parallel \u2014 Diagnostic synthesis without\
-    \ clinician oversight requires review."
+  description: HIPAA §164.502(g) parallel — Diagnostic synthesis without clinician
+    oversight requires review.
   priority: 75
   action: HUMAN_REVIEW
   conditions:
@@ -172,8 +175,8 @@ ingress_rules:
     match_type: exact
     value: code_execution
 - name: hipaa_log_all_phi_access
-  description: "HIPAA \xA7164.312(b) \u2014 Audit trail: log every PHI-adjacent request,\
-    \ even allowed ones."
+  description: 'HIPAA §164.312(b) — Audit trail: log every PHI-adjacent request, even
+    allowed ones.'
   priority: 5
   action: LOG
   conditions:
@@ -191,23 +194,22 @@ egress_rules:
     match_type: boolean
     value: true
 - name: hipaa_egress_block_phi_in_output
-  description: "HIPAA \xA7164.502(a) \u2014 Strip / block model output containing\
-    \ PHI patterns."
+  description: HIPAA §164.502(a) — Strip / block model output containing PHI patterns.
   priority: 100
   action: DENY
-  deny_message: "[SOUF AI \xB7 HIPAA Pack \xB7 Egress] Output blocked: model response\
-    \ contains PHI markers."
+  deny_message: '[SOUF AI · HIPAA Pack · Egress] Output blocked: model response contains
+    PHI markers.'
   conditions:
   - field: contains_pii
     match_type: boolean
     value: true
 - name: hipaa_egress_block_credentials
-  description: "HIPAA \xA7164.312(e) \u2014 Block egress of healthcare credentials\
-    \ (NPI/DEA/license numbers)."
+  description: HIPAA §164.312(e) — Block egress of healthcare credentials (NPI/DEA/license
+    numbers).
   priority: 95
   action: DENY
-  deny_message: "[SOUF AI \xB7 HIPAA Pack \xB7 Egress] Output blocked: healthcare\
-    \ credential disclosure."
+  deny_message: '[SOUF AI · HIPAA Pack · Egress] Output blocked: healthcare credential
+    disclosure.'
   conditions:
   - field: contains_credentials
     match_type: boolean

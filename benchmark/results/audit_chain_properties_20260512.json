@@ -1,0 +1,47 @@
+{
+  "suite": "SOUF AI Audit Chain Property Tests",
+  "date": "2026-05-12",
+  "n_stat": 1000,
+  "latency_target_ms": 1.0,
+  "results": [
+    {
+      "property": "P1 JCS determinism",
+      "status": "PASS",
+      "detail": "canonical(X)==canonical(X) for 3 distinct entries; key-order verified"
+    },
+    {
+      "property": "P2 sign+verify round-trip",
+      "status": "PASS",
+      "detail": "verify_chain() on 50-record chain \u2192 True"
+    },
+    {
+      "property": "P3 tamper detection \u2014 decision field",
+      "status": "PASS",
+      "detail": "mutate entry.action DENY\u2192ALLOW \u2192 verify()=False (tamper caught)"
+    },
+    {
+      "property": "P4 tamper detection \u2014 signature bytes",
+      "status": "PASS",
+      "detail": "flip sig[0] \u2192 verify()=False (tamper caught)"
+    },
+    {
+      "property": "P5 wrong-key rejection",
+      "status": "PASS",
+      "detail": "sign with keyA, verify with keyB.vk \u2192 rejected=True"
+    },
+    {
+      "property": "P6 signing latency @ N=1000",
+      "status": "PASS",
+      "detail": "mean=0.1611ms  p50=0.1606ms  p99=0.1997ms  95%CI=[0.1600,0.1622]ms  target<1.0ms"
+    },
+    {
+      "property": "P7 chain integrity \u2014 splice detection",
+      "status": "PASS",
+      "detail": "splice injected record at pos 2 \u2192 verify_chain()=False (detected)"
+    }
+  ],
+  "summary": {
+    "passed": 7,
+    "total": 7
+  }
+}

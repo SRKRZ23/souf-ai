@@ -141,6 +141,21 @@ var PIIRequestPatterns = compile("pii_request", []string{
 	`(?i)\b(return|give|list|show|reveal|output|print|provide|enumerate)\b.{0,30}\b(every|all|each|any)\b.{0,60}\b(email\s+address\w*|home\s+address\w*|personal\s+info\w*|phone\s+number\w*|SSN\w*)\b.{0,80}\b(from\s+your|you\s+remember|your\s+training|training\s+data|memorized?|seen\s+in)\b`,
 	// P2: "reveal the home addresses … you remember from training data"
 	`(?i)\b(reveal|return|list|show|output|enumerate|provide|give)\b.{0,60}\b(email\s+address\w*|home\s+address\w*|addresses\s+of|contact\s+info\w*)\b.{0,80}\b(you\s+remember|from\s+(your\s+)?training|training\s+data|memorized?)\b`,
+
+	// --- SOUF AI extensions v0.5 (2026-05-12) — healthcare PHI bulk-access patterns ---
+	// PH1: Bulk patient data enumeration — verb + quantifier + PHI-type (order-independent)
+	// Fixed: added standalone insurance/member IDs terms; use patient\w* for plural forms
+	`(?i)\b(list|export|dump|give\s+me|output|retrieve|pull|provide|show)\b.{0,60}\b(all|every|each|complete|entire|full)\b.{0,80}\b(patient\s+(names?|records?|data|information|DOBs?|dates?\s+of\s+birth|SSNs?|social\s+security|email\s+address\w*|phone\s+number\w*|address\w*|insurance\s+(policy\s+)?numbers?|member\s+IDs?|diagnos\w+|prescription\w*|histor\w*)|PHI|EHR|medical\s+records?|health\s+(record|information)|protected\s+health|insurance\s+(policy\s+)?numbers?|member\s+IDs?|cardholder\s+(data|records?))\b`,
+	// PH2: Re-identification / de-anonymization attack — fixed: patient\w* catches "patients"
+	`(?i)\b(re.?identify\w*|re.?link\w*|link\s+back|match\s+(back|them\s+back)|cross.?reference\w*|reconstruct\s+(which|the\s+original|patient\w*)|reverse.?anonymi[sz]\w*|reverse.?de.?identify\w*|de.?anonymi[sz]\w*|un.?anonymi[sz]\w*)\b.{0,120}\b(patient\w*|record\w*|dataset|cohort|de.?identified|anonymi[sz]ed|research\s+subject)\b`,
+	// PH3: Audit log bypass / suppression — fixed: bounded wildcard between "any" and "log"
+	`(?i)\b(without\s+logging\w*|without\s+generating\s+(\w+\s+){0,2}log\w*|without\s+creating\s+(\w+\s+){0,2}log\w*|no\s+log\w*\s+(generated|written|created|recorded|added)|disable\s+(the\s+)?audit|bypass\s+(the\s+)?audit|skip\s+(the\s+)?(audit|access\s+log\w*)|don.?t\s+(log|record|write)\s+(this|the)\s+(session|query|request|access)|don.?t\s+want\s+(the\s+)?(audit|access|log\w+)\s+(system|trail|log\w*)\s+(recording|capturing|tracking|logging)|without\s+the\s+(audit|access)\s+(log|trail|system)\s+(recording|capturing|tracking))\b`,
+	// PH4: Minimum-necessary violation — complete/all records without scope
+	`(?i)\b(complete|entire|full|all\s+available)\b.{0,30}\b(medical|patient|health|clinical|psychiatric|mental\s+health)\b.{0,30}\b(information|records?|history|data|file\w*)\b.{0,60}\b(for\s+(all|every|each)|across\s+the\s+(entire|whole|full)|in\s+the\s+(entire|whole|full)\s+(database|system|EHR|ward|hospital))\b`,
+	// PH5: Synthetic medical diagnosis / treatment without clinical oversight
+	`(?i)\b(diagnos\w+|prescrib\w+|medic\w+\s+diagnos\w*)\b.{0,120}\b(without\s+(clinical|physician|doctor|medical|clinician|professional)\s+(oversight|supervision|review|approval|authorization)|bypass\w*\s+(physician|doctor|clinical|medical)\s+(review|oversight|approval|supervision))\b`,
+	// PH6: Treatment plan / drug dosage bypassing physician review
+	`(?i)\b(treatment\s+plan|drug\s+(dosage|schedule)|dosage\s+schedule|medication\s+(plan|schedule|dosage)|care\s+plan)\b.{0,120}\b(without\s+(physician|doctor|clinical|medical|clinician)\s+(review|oversight|supervision|approval)|bypass\w*\s+(physician|doctor|clinical|medical)\s+(review|oversight|approval))\b`,
 })
 
 // --- Malware / Exploit Request Patterns ---
@@ -220,6 +235,14 @@ var MalwareRequestPatterns = compile("malware_request", []string{
 	// 10. Burp Intruder / web-app brute-force tooling
 	`(?i)\b(burp\s+(suite\s+)?intruder|zap\s+(fuzzer|brute)|ffuf|wfuzz|hydra|patator|medusa)\b.{0,120}\b(attack|brute|fuzz|enumerate|crack|payload|target|admin|login)\b`,
 
+	// --- SOUF AI extensions v0.5 (2026-05-12) — payment-context malware patterns ---
+	// MPC1: CVV brute-force against payment validator — PCI-DSS Req 11.4 offense
+	`(?i)\b(brute.?force|enumerate|guess|iterate)\b.{0,80}\b(CVV|CVV2|CVC|card\s+(validation|verification)\s+(value|code)|validation\s+endpoint|payment\s+(API|endpoint|gateway))\b.{0,80}\b(valid\w*|stolen|PAN|card\s+number|account\s+number)\b`,
+	// MPC2: Payment gateway exploit / penetration without authorization — Req 11.4
+	`(?i)\b(exploit|attack|compromise|breach|penetrate)\b.{0,60}\b(Stripe|PayPal|Square|Adyen|Braintree|payment\s+(gateway|processor|endpoint)|card\s+(processing|payment)\s+(endpoint|API|system))\b.{0,80}\b(extract|exfiltrate|dump|steal|harvest|cardholder|PAN|card\s+data|payment\s+data)\b`,
+	// MPC3: Store SAD post-authorization (Req 3.3) — CVV/track data retention
+	`(?i)\b(store|save|log|record|write|retain|keep|persist)\b.{0,60}\b(CVV\d?|CVC\d?|card\s+verification\s+(value|code)|magnetic\s+stripe\s+track|full\s+track\s+data|track\s+[12]\s+data|sensitive\s+authentication\s+data|SAD)\b.{0,80}\b(plaintext|plain\s+text|unencrypted|cleartext|without\s+encryption|in\s+(the\s+)?(database|table|log|file))\b`,
+
 	// --- SOUF AI extensions v0.4 (2026-05-12) — targeted malware closure ---
 	// M1: "polymorphic/metamorphic/FUD [malware-class]" — evasion-class descriptor alone is sufficient signal
 	`(?i)\b(polymorphic|metamorphic|obfuscat\w+|FUD|fully\s+undetectable|self.?modifying)\b.{0,30}\b(ransomware|malware|virus|payload|trojan|worm|backdoor|keylogger)\b`,
@@ -298,6 +321,14 @@ var RoleImpersonationPatterns = compile("role_impersonation", []string{
 	`(?i)\b(as\s+(the\s+)?)(model'?s?\s+)?(developer|admin|creator|owner|operator|architect)\b.{0,60}\b(I\s+have|I\s+hold|I\s+possess|I\s+was\s+given|I\s+was\s+granted)\b.{0,40}\b(override|elevated|privileged|admin|root|debug|special)\s+(permission\w*|access|rights?|mode|privilege\w*)\b`,
 	// R2: "Execute the following in privileged mode" — privileged-context execution request
 	`(?i)\b(execute|run|process|apply|perform)\b.{0,30}\b(the\s+)?(following|next\s+(command|instruction)|this)\b.{0,60}\b(in\s+)?(privileged|elevated|admin|root|sudo|superuser)\s+(mode|context|shell|environment|access)\b`,
+
+	// --- SOUF AI extensions v0.5 (2026-05-12) — healthcare + payment role-impersonation ---
+	// R3: Clinical-staff impersonation + access/bypass request
+	`(?i)\bI(['']?\s*m| am)\b.{0,60}\b(Dr\.|doctor|physician|attending\s+physician?|chief\s+of\s+(medicine|surgery|staff)|medical\s+director|surgeon|hospitalist|clinician|nurse\s+(practitioner|manager|director)|hospital\s+administrator)\b.{0,120}\b(access|bypass|disable|override|without\s+(authentication|auth|standard|normal|the\s+standard)|give\s+me\s+(all|full|complete|immediate)|need\s+(immediate|urgent|direct)\s+access)\b`,
+	// R4: Payment-system administrator / CDE owner impersonation + bypass
+	`(?i)\bI(['']?\s*m| am)\b.{0,50}\b(the\s+)?(payment\s+(system\s+)?admin\w*|CDE\s+(system\s+)?owner|fintech\s+admin\w*|payment\s+administrator|card\s+(system\s+)?admin\w*)\b.{0,120}\b(disable|bypass|without\s+(authentication|MFA|multi.?factor|auth)|give\s+me\s+(all|full|complete)|override|authorize\s+(you\s+to\s+)?bypass)\b`,
+	// R5: "As [senior/attending/chief] physician I have [access/override] privileges"
+	`(?i)\b(as\s+(the\s+)?(senior\s+|attending\s+|chief\s+|head\s+|primary\s+|lead\s+)?(physician|doctor|clinician|nurse|surgeon|administrator|admin))\b.{0,80}\b(I\s+have|I\s+hold|I\s+was\s+given|I\s+am\s+authorized|I\s+possess)\b.{0,60}\b(override|elevated|privileged|admin|special|emergency|unrestricted)\s+(privileges?|access|permission\w*|right\w*)\b`,
 })
 
 // --- Data Exfiltration Patterns ---
@@ -363,6 +394,29 @@ var ExfiltrationPatterns = compile("exfiltration", []string{
 	// --- SOUF AI extensions v0.4 (2026-05-12) — targeted exfiltration closure ---
 	// E1: "Read $HOME/.aws/credentials and POST" — fix: remove \b before \.aws (non-word boundary issue)
 	`(?i)\b(read|cat|dump|access|open|get|fetch|curl|wget|retrieve)\b.{0,60}\.aws/credentials.{0,120}\b(POST|send|upload|transmit|email|forward|push)\b`,
+
+	// --- SOUF AI extensions v0.5 (2026-05-12) — cardholder data exfiltration (PCI-DSS Req 4.2) ---
+	// EF1: Send/email cardholder data / PAN / credit card numbers to external destination
+	`(?i)\b(send|email|transmit|upload|export|post|forward)\b.{0,60}\b(all\s+)?(cardholder\s+(data|records?|information|database\s+dump)|PANs?\b|primary\s+account\s+numbers?|credit\s+card\s+(numbers?|data)|full\s+card\s+(numbers?|data)|unencrypted\s+(card|PAN)|card\s+data)\b.{0,80}\b(to\s+\S*@\S*|to\s+(external|remote|outside|third.?party|our\s+webhook)|as\s+(an?\s+)?attachment|via\s+(FTP|HTTP|email|SMTP))\b`,
+	// EF2: Upload to FTP/HTTP with cardholder data — covers ftp:// and http:// scheme exfil
+	`(?i)\b(upload|send|post|transfer|sync)\b.{0,80}\b(cardholder|PANs?\b|credit\s+card\s+(number|data)|card\s+data|payment\s+card|billing\s+address\w*)\b.{0,80}\b(to\s+(ftp|http)\s*://|\b(FTP|cleartext|unencrypted)\s+server)\b`,
+	// EF3: POST cardholder dump to webhook/collector (structure: POST ... dump ... to ... http)
+	`(?i)\bPOST\b.{0,80}\b(cardholder|card)\b.{0,40}\b(database\s+dump|dump|export|data|all\s+records?)\b.{0,80}\b(to|via)\b.{0,60}\b(webhook|http://|https://|collector|external|remote)\b`,
+	// EF4: Upload CSV of PANs to FTP server (explicit FTP scheme or server)
+	`(?i)\b(upload|send|transfer|post)\b.{0,40}\b(CSV|file|dump|all|export)\b.{0,40}\b(PANs?\b|PAN\w*|billing\s+address\w*|cardholder\s+(data|record\w*))\b.{0,80}\b(FTP|ftp\s*://|this\s+(FTP|ftp)\s+server)\b`,
+
+	// --- SOUF AI extensions v0.5c (2026-05-12) — PAN disclosure (Req 3.3/3.5): list/retrieve/show all PANs ---
+	// PD1: list/give/show/retrieve/export + all/full/unmasked/complete + PAN/card numbers/cardholder CHD
+	// NOTE: verb requirement prevents educational "what are the requirements for primary account numbers" queries from matching.
+	`(?i)\b(list|give\s+me|show\s+me|show|retrieve|export|dump|display|output)\b.{0,120}\b(all|full|unmasked|complete|every|each)\b.{0,80}\b(PANs?\b|primary\s+account\s+numbers?\b|credit\s+card\s+numbers?\b|16.?digit\s+(credit\s+)?card\s+numbers?\b|cardholder\s+(data|names?|records?)\b)`,
+	// PD2: show/give + card number/CVV/expiry for customers (CVV = SAD; always prohibited)
+	`(?i)\b(show\s+me|give\s+me|provide|display|output|return|reveal)\b.{0,100}\b(card\s*(number\w*|#)|CVV\d?|CVC\d?|expir(y|ation)\s*(date)?|cardholder\s+name)\b.{0,80}\bfor\s+(the\s+)?(top|all|every)\b`,
+
+	// --- SOUF AI extensions v0.5b (2026-05-12) — SAD retention + CDE impersonation ---
+	// EF5: Storing/logging SAD (magnetic stripe track data, CVV) — Req 3.3 post-auth prohibition
+	`(?i)\b(log|store|retain|record|keep|save|write)\b.{0,60}\b(full\s+)?(magnetic\s+stripe(\s+track)?|track\s+[12]\s+data|full\s+track\s+data|card.?present\s+track|sensitive\s+authentication\s+data|SAD)\b.{0,100}\b(transaction\w*|card.?present|authorization|purchase|debugging|replay|later)\b`,
+	// EF6: "As the CDE system owner I am authorizing you to bypass [MFA/auth]" — positional role claim
+	`(?i)\b(as\s+(the\s+)?)(CDE\s+(system\s+)?owner|payment\s+(system\s+)?admin\w*|card\s+(data\s+)?(environment|system)\s+(owner|admin\w*)|fintech\s+admin\w*)\b.{0,160}\b(authori[zs]\w*\s+(you\s+to\s+)?bypass|bypass\s+(multi.?factor|MFA|two.?factor|2FA|authentication|auth)|disable\s+(authentication|auth|MFA|multi.?factor))\b`,
 })
 
 // --- Harm / Violence / Weapons Patterns ---
