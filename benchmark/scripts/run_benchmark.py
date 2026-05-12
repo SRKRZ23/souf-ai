@@ -192,19 +192,52 @@ def compute_per_category(results: list[dict]) -> dict:
     return out
 
 
+def compute_per_subset(results: list[dict]) -> dict:
+    """Aggregate by subset/source field — used in OOD eval to break down by corpus origin."""
+    by_subset = defaultdict(list)
+    for r in results:
+        key = r.get("subset") or r.get("source") or "unspecified"
+        by_subset[key].append(r)
+    out = {}
+    for sub, group in by_subset.items():
+        expected_blocks = sum(1 for r in group if is_expected_block(r["expected_verdict"]))
+        actual_blocks = sum(
+            1 for r in group
+            if is_expected_block(r["expected_verdict"]) and is_block_verdict(r["actual_action"])
+        )
+        benign = sum(1 for r in group if not is_expected_block(r["expected_verdict"]))
+        false_positives = sum(
+            1 for r in group
+            if (not is_expected_block(r["expected_verdict"])) and is_block_verdict(r["actual_action"])
+        )
+        out[sub] = {
+            "n_prompts": len(group),
+            "n_expected_block": expected_blocks,
+            "n_actual_block": actual_blocks,
+            "block_rate": (actual_blocks / expected_blocks) if expected_blocks else None,
+            "n_benign": benign,
+            "n_false_positives": false_positives,
+            "false_positive_rate": (false_positives / benign) if benign else None,
+        }
+    return out
+
+
 def main():
     parser = argparse.ArgumentParser(description="Run SOUF AI adversarial benchmark.")
     parser.add_argument("--policy", default=None, help="Path to policy YAML (default: Lobster Trap default)")
     parser.add_argument("--out", default=None, help="Output JSON path")
     parser.add_argument("--limit", type=int, default=None, help="Only run first N prompts (debug)")
+    parser.add_argument("--data", default=None, help="Path to alternate prompt JSON (default: benchmark/data/attack_prompts.json)")
     args = parser.parse_args()
+
+    data_path = Path(args.data) if args.data else BENCH_DATA
 
     if not LT_BIN.exists():
         print(f"ERROR: lobstertrap binary not found at {LT_BIN}", file=sys.stderr)
         print(f"Build it via: cd {LT_ROOT} && go build -o lobstertrap .", file=sys.stderr)
         sys.exit(1)
 
-    with open(BENCH_DATA) as f:
+    with open(data_path) as f:
         bench = json.load(f)
 
     prompts = bench["prompts"]
@@ -213,6 +246,7 @@ def main():
 
     print(f"Running {len(prompts)} prompts through Lobster Trap...")
     print(f"  Binary: {LT_BIN}")
+    print(f"  Data:   {data_path}")
     print(f"  Policy: {args.policy or 'default (configs/default_policy.yaml)'}")
     print()
 
@@ -223,6 +257,8 @@ def main():
         results.append({
             "id": p["id"],
             "category": p["category"],
+            "subset": p.get("subset"),
+            "source": p.get("source"),
             "prompt": p["prompt"],
             "expected_verdict": p["expected_verdict"],
             "actual_action": verdict["action"],
@@ -239,18 +275,21 @@ def main():
 
     metrics = compute_metrics(results)
     per_cat = compute_per_category(results)
+    per_sub = compute_per_subset(results)
     false_negatives = [r for r in results if is_expected_block(r["expected_verdict"]) and not is_block_verdict(r["actual_action"])]
     false_positives = [r for r in results if not is_expected_block(r["expected_verdict"]) and is_block_verdict(r["actual_action"])]
 
     report = {
         "timestamp": time.strftime("%Y-%m-%dT%H:%M:%S"),
         "policy": args.policy or "default",
+        "data_path": str(data_path),
         "n_prompts": len(results),
         "elapsed_seconds": round(elapsed, 1),
         "metrics": metrics,
         "per_category": per_cat,
-        "false_negatives": [{"id": r["id"], "category": r["category"], "prompt": r["prompt"], "actual_action": r["actual_action"]} for r in false_negatives],
-        "false_positives": [{"id": r["id"], "category": r["category"], "prompt": r["prompt"], "actual_action": r["actual_action"], "actual_rule": r["actual_rule"]} for r in false_positives],
+        "per_subset": per_sub,
+        "false_negatives": [{"id": r["id"], "category": r["category"], "subset": r.get("subset"), "prompt": r["prompt"], "actual_action": r["actual_action"]} for r in false_negatives],
+        "false_positives": [{"id": r["id"], "category": r["category"], "subset": r.get("subset"), "prompt": r["prompt"], "actual_action": r["actual_action"], "actual_rule": r["actual_rule"]} for r in false_positives],
         "raw_results": results,
     }
 
@@ -276,6 +315,15 @@ def main():
         rate_str = f"{rate:.0%}" if rate is not None else "N/A"
         print(f"  {cat:25s} {stats['n_actual_block']:2d}/{stats['n_expected_block']:2d}  ({rate_str})")
     print()
+    if any(r.get("subset") for r in results):
+        print("Per-subset breakdown:")
+        for sub, stats in sorted(per_sub.items()):
+            br = stats["block_rate"]
+            br_str = f"{br:.0%}" if br is not None else "N/A"
+            fpr = stats["false_positive_rate"]
+            fpr_str = f"{fpr:.0%}" if fpr is not None else "N/A"
+            print(f"  {sub:25s} block {stats['n_actual_block']:2d}/{stats['n_expected_block']:2d} ({br_str})  FP {stats['n_false_positives']}/{stats['n_benign']} ({fpr_str})")
+        print()
     print(f"False negatives ({len(false_negatives)}) — gaps SOUF AI must close:")
     for r in false_negatives[:10]:
         print(f"  {r['id']:8s} [{r['category']}] {r['prompt'][:70]}...")
