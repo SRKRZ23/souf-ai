@@ -1,0 +1,11 @@
+*.pyc
+__pycache__/
+.env
+.DS_Store
+*.log
+node_modules/
+.venv/
+build/
+*.swp
+.idea/
+.vscode/
