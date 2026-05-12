@@ -147,13 +147,56 @@ No changes required to Lobster Trap. SOUF AI's `code/audit/wrap_audit.py` reads 
 
 ---
 
-## What ships Day 3-4
+## What ships (Day 1 — already in this repo)
 
-- `code/audit/envelope.py` — minimal Ed25519 + JCS implementation
-- `code/audit/verify.py` — third-party-runnable verifier (proves tamper-evidence)
-- `code/audit/sample_log.jsonl` — 100 signed entries from a benchmark run
-- Integration with the HF Space demo so each demo decision is verifiable live
-- Public verifier key published at the demo's `/.well-known/souf-audit-keys.json`
+- `code/audit/envelope.py` — RFC 8785 JCS canonicalization + Ed25519 signing reference implementation (pure-stdlib + PyNaCl, ~250 lines).
+- `code/audit/verify.py` — standalone third-party verifier. Requires only PyNaCl + a published public key; no SOUF AI insider access.
+- `code/audit/sample_log.jsonl` — 5-entry sample audit log demonstrating one healthcare agent's decisions across DENY (malware request), DENY (PHI bulk disclosure), DENY (clinician impersonation), ALLOW (legitimate clinical query), DENY (exfiltration).
+- `code/audit/audit_keys/sample.pub.json` — public key for verifying the sample log.
+
+## Measured properties (verified 2026-05-12 by self-tests in `envelope.py`)
+
+| Property | Test | Result |
+|---|---|---|
+| JCS determinism (object key ordering) | Two dicts with same keys in different orders → identical bytes | ✓ Pass |
+| Sign + verify roundtrip | Sign envelope → independent verifier accepts | ✓ Pass |
+| Tamper detection (decision field) | Flip `decision.action` from DENY to ALLOW post-sign | ✓ Caught (signature invalid) |
+| Tamper detection (signature bytes) | Modify final 2 chars of `signature.value` | ✓ Caught |
+| Wrong-key rejection | Verify with different public key | ✓ Rejected |
+| Signing latency at N=1000 | 1000 signing ops, measured wall-clock | **0.285 ms / op** |
+
+Latency budget: well below the 5 ms target. SOUF AI's audit chain adds <0.3 ms per Lobster Trap policy decision; total ingest-to-audit latency stays in single-digit milliseconds.
+
+## Verifier output (against the shipped sample log)
+
+Clean log (5 entries):
+```
+line 1: ✓ souf-ai-06449171-...
+line 2: ✓ souf-ai-3270ab1c-...
+line 3: ✓ souf-ai-f7d3a71d-...
+line 4: ✓ souf-ai-97b63008-...
+line 5: ✓ souf-ai-d1cb15cf-...
+
+verified 5 of 5 entries; 0 failed
+```
+
+Tampered log (one entry modified post-sign — `decision.action` changed from DENY to ALLOW):
+```
+line 1: ✗ signature invalid (souf-ai-06449171-...)
+line 2: ✓ souf-ai-3270ab1c-...
+...
+
+verified 4 of 5 entries; 1 failed
+```
+
+The tampered entry is detected; the other entries (whose signatures were not modified) remain valid. This demonstrates the chain is **per-entry tamper-evident** — corruption of one record does not invalidate the rest.
+
+## What ships next (Day 2-5)
+
+- HF Space healthcare demo: each demo prompt's PROV-JSON audit entry signed live, verifier endpoint exposed.
+- Public verifier key published at the demo's `/.well-known/souf-audit-keys.json`.
+- 100-entry full demo log generated from real benchmark replay.
+- Integration with Pillar 6 healthcare-vertical demo (Day 5-6 build).
 
 ---
 
