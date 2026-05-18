@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 620" width="1100" height="620" font-family="'Segoe UI', system-ui, -apple-system, sans-serif">
+  <!-- Background -->
+  <rect width="1100" height="620" fill="#0f1117"/>
+
+  <!-- Title -->
+  <text x="550" y="42" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff" letter-spacing="1">SOUF AI — Deep Prompt Inspection Architecture</text>
+  <text x="550" y="65" text-anchor="middle" font-size="13" fill="#6b7280">Sector-Optimised Utility Firewall · OpenAI-compatible drop-in proxy · Sub-millisecond inspection</text>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- LEFT: Agent -->
+  <rect x="30" y="220" width="130" height="70" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="95" y="249" text-anchor="middle" font-size="13" font-weight="600" fill="#94a3b8">LLM Agent</text>
+  <text x="95" y="267" text-anchor="middle" font-size="11" fill="#64748b">Any Client</text>
+  <text x="95" y="282" text-anchor="middle" font-size="10" fill="#475569">OpenAI SDK / REST</text>
+
+  <!-- Arrow Agent → Proxy -->
+  <line x1="160" y1="255" x2="215" y2="255" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrowBlue)"/>
+  <text x="188" y="247" text-anchor="middle" font-size="10" fill="#3b82f6">HTTP</text>
+  <text x="188" y="260" text-anchor="middle" font-size="10" fill="#3b82f6">:8080</text>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- CENTER: SOUF AI Proxy box -->
+  <rect x="220" y="100" width="620" height="400" rx="14" fill="#0d1f3c" stroke="#1d4ed8" stroke-width="2"/>
+  <rect x="220" y="100" width="620" height="36" rx="14" fill="#1d4ed8"/>
+  <rect x="220" y="122" width="620" height="14" rx="0" fill="#1d4ed8"/>
+  <text x="530" y="123" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff" letter-spacing="0.5">SOUF AI Proxy  ·  :8080</text>
+
+  <!-- ─── Ingress DPI ─── -->
+  <rect x="250" y="155" width="260" height="145" rx="10" fill="#0f172a" stroke="#2563eb" stroke-width="1.5"/>
+  <rect x="250" y="155" width="260" height="26" rx="10" fill="#1e3a5f"/>
+  <rect x="250" y="169" width="260" height="12" rx="0" fill="#1e3a5f"/>
+  <text x="380" y="172" text-anchor="middle" font-size="12" font-weight="600" fill="#93c5fd">▼  Ingress DPI</text>
+
+  <text x="268" y="198" font-size="11" fill="#64748b">PatternSets</text>
+  <text x="268" y="214" font-size="11" fill="#94a3b8">· 11 compiled pattern groups</text>
+  <text x="268" y="229" font-size="11" fill="#94a3b8">· 254 regex (jailbreak, PHI, PAN…)</text>
+  <text x="268" y="244" font-size="11" fill="#94a3b8">· OWASP LLM Top-10 coverage</text>
+  <text x="268" y="259" font-size="11" fill="#94a3b8">· Execution: &lt;1ms per prompt</text>
+  <text x="268" y="277" font-size="10" fill="#475569">✓ HIPAA  ✓ PCI-DSS  ✓ OOD 100%</text>
+
+  <!-- ─── Policy Engine ─── -->
+  <rect x="530" y="155" width="280" height="145" rx="10" fill="#0f172a" stroke="#7c3aed" stroke-width="1.5"/>
+  <rect x="530" y="155" width="280" height="26" rx="10" fill="#2d1b4e"/>
+  <rect x="530" y="169" width="280" height="12" rx="0" fill="#2d1b4e"/>
+  <text x="670" y="172" text-anchor="middle" font-size="12" font-weight="600" fill="#c4b5fd">⚡  Policy Engine</text>
+
+  <text x="548" y="198" font-size="11" fill="#64748b">YAML Match-Action Tables</text>
+  <text x="548" y="214" font-size="11" fill="#94a3b8">· ALLOW / DENY / HUMAN_REVIEW</text>
+  <text x="548" y="229" font-size="11" fill="#94a3b8">· Priority-ordered rules (0–100)</text>
+  <text x="548" y="244" font-size="11" fill="#94a3b8">· HIPAA pack: §164.502/308/312</text>
+  <text x="548" y="259" font-size="11" fill="#94a3b8">· PCI-DSS pack: Req 3.3/3.5/7.2</text>
+  <text x="548" y="277" font-size="10" fill="#475569">F1 = 1.000 on all 4 benchmarks</text>
+
+  <!-- ─── Audit Chain ─── -->
+  <rect x="250" y="320" width="260" height="155" rx="10" fill="#0f172a" stroke="#059669" stroke-width="1.5"/>
+  <rect x="250" y="320" width="260" height="26" rx="10" fill="#064e3b"/>
+  <rect x="250" y="334" width="260" height="12" rx="0" fill="#064e3b"/>
+  <text x="380" y="337" text-anchor="middle" font-size="12" font-weight="600" fill="#6ee7b7">🔐  Audit Chain</text>
+
+  <text x="268" y="363" font-size="11" fill="#64748b">Ed25519 Cryptographic Log</text>
+  <text x="268" y="379" font-size="11" fill="#94a3b8">· JCS canonical JSON per record</text>
+  <text x="268" y="394" font-size="11" fill="#94a3b8">· SHA-256 hash chain (prev_hash)</text>
+  <text x="268" y="409" font-size="11" fill="#94a3b8">· Tamper-evident: splice detection</text>
+  <text x="268" y="424" font-size="11" fill="#94a3b8">· Signing latency: 0.161ms mean</text>
+  <text x="268" y="442" font-size="10" fill="#475569">7/7 properties PASS  ·  p99 = 0.200ms</text>
+  <text x="268" y="458" font-size="10" fill="#475569">HIPAA §164.312(b) compliant</text>
+
+  <!-- ─── Egress DPI ─── -->
+  <rect x="530" y="320" width="280" height="155" rx="10" fill="#0f172a" stroke="#dc2626" stroke-width="1.5"/>
+  <rect x="530" y="320" width="280" height="26" rx="10" fill="#450a0a"/>
+  <rect x="530" y="334" width="280" height="12" rx="0" fill="#450a0a"/>
+  <text x="670" y="337" text-anchor="middle" font-size="12" font-weight="600" fill="#fca5a5">▲  Egress DPI</text>
+
+  <text x="548" y="363" font-size="11" fill="#64748b">Output Sanitization</text>
+  <text x="548" y="379" font-size="11" fill="#94a3b8">· Block credential leaks in response</text>
+  <text x="548" y="394" font-size="11" fill="#94a3b8">· Strip unmasked PAN / CVV output</text>
+  <text x="548" y="409" font-size="11" fill="#94a3b8">· Detect PHI in model reply</text>
+  <text x="548" y="424" font-size="11" fill="#94a3b8">· Human-review escalation flag</text>
+  <text x="548" y="442" font-size="10" fill="#475569">Gemini integration on HUMAN_REVIEW</text>
+  <text x="548" y="458" font-size="10" fill="#475569">Zero false positives on 30 benign</text>
+
+  <!-- Internal arrows -->
+  <!-- Ingress → Policy -->
+  <line x1="510" y1="228" x2="528" y2="228" stroke="#6366f1" stroke-width="1.5" marker-end="url(#arrowPurple)"/>
+  <!-- Policy → Audit -->
+  <line x1="670" y1="300" x2="670" y2="315" stroke="#6366f1" stroke-width="1.5" marker-end="url(#arrowPurple)"/>
+  <line x1="670" y1="315" x2="395" y2="315" stroke="#6366f1" stroke-width="1.5"/>
+  <line x1="395" y1="315" x2="395" y2="318" stroke="#6366f1" stroke-width="1.5" marker-end="url(#arrowPurple)"/>
+  <!-- Audit → Egress -->
+  <line x1="510" y1="397" x2="528" y2="397" stroke="#6366f1" stroke-width="1.5" marker-end="url(#arrowPurple)"/>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- RIGHT: LLM Backend -->
+  <rect x="900" y="220" width="160" height="70" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="980" y="249" text-anchor="middle" font-size="13" font-weight="600" fill="#94a3b8">LLM Backend</text>
+  <text x="980" y="266" text-anchor="middle" font-size="11" fill="#64748b">Ollama / vLLM</text>
+  <text x="980" y="281" text-anchor="middle" font-size="10" fill="#475569">llama.cpp / any API</text>
+
+  <!-- Arrow Proxy → LLM -->
+  <line x1="840" y1="255" x2="897" y2="255" stroke="#10b981" stroke-width="2" marker-end="url(#arrowGreen)"/>
+  <text x="869" y="247" text-anchor="middle" font-size="10" fill="#10b981">ALLOW</text>
+  <text x="869" y="260" text-anchor="middle" font-size="10" fill="#10b981">only</text>
+
+  <!-- DENY path down -->
+  <line x1="530" y1="170" x2="530" y2="90" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="530" y1="90" x2="200" y2="90" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowRed)"/>
+  <rect x="285" y="74" width="180" height="22" rx="4" fill="#1a0505"/>
+  <text x="375" y="89" text-anchor="middle" font-size="11" fill="#ef4444">DENY — 403 + regulation citation</text>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- Bottom stats bar -->
+  <rect x="30" y="535" width="1040" height="60" rx="10" fill="#111827" stroke="#1f2937" stroke-width="1"/>
+
+  <text x="120" y="558" text-anchor="middle" font-size="11" font-weight="600" fill="#6b7280">IN-DIST</text>
+  <text x="120" y="576" text-anchor="middle" font-size="18" font-weight="700" fill="#22d3ee">100%</text>
+  <text x="120" y="590" text-anchor="middle" font-size="10" fill="#475569">48/48 attacks · 0 FP</text>
+
+  <line x1="220" y1="540" x2="220" y2="590" stroke="#1f2937" stroke-width="1"/>
+
+  <text x="330" y="558" text-anchor="middle" font-size="11" font-weight="600" fill="#6b7280">OOD ADVERSARIAL</text>
+  <text x="330" y="576" text-anchor="middle" font-size="18" font-weight="700" fill="#22d3ee">100%</text>
+  <text x="330" y="590" text-anchor="middle" font-size="10" fill="#475569">90/90 attacks · 0 FP</text>
+
+  <line x1="440" y1="540" x2="440" y2="590" stroke="#1f2937" stroke-width="1"/>
+
+  <text x="550" y="558" text-anchor="middle" font-size="11" font-weight="600" fill="#6b7280">HIPAA VERTICAL</text>
+  <text x="550" y="576" text-anchor="middle" font-size="18" font-weight="700" fill="#22d3ee">100%</text>
+  <text x="550" y="590" text-anchor="middle" font-size="10" fill="#475569">16/16 attacks · F1=1.000</text>
+
+  <line x1="660" y1="540" x2="660" y2="590" stroke="#1f2937" stroke-width="1"/>
+
+  <text x="770" y="558" text-anchor="middle" font-size="11" font-weight="600" fill="#6b7280">PCI-DSS VERTICAL</text>
+  <text x="770" y="576" text-anchor="middle" font-size="18" font-weight="700" fill="#22d3ee">100%</text>
+  <text x="770" y="590" text-anchor="middle" font-size="10" fill="#475569">16/16 attacks · F1=1.000</text>
+
+  <line x1="880" y1="540" x2="880" y2="590" stroke="#1f2937" stroke-width="1"/>
+
+  <text x="990" y="558" text-anchor="middle" font-size="11" font-weight="600" fill="#6b7280">AUDIT CHAIN</text>
+  <text x="990" y="576" text-anchor="middle" font-size="18" font-weight="700" fill="#22d3ee">7/7</text>
+  <text x="990" y="590" text-anchor="middle" font-size="10" fill="#475569">properties PASS · 0.161ms sign</text>
+
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrowBlue" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#3b82f6"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#10b981"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#ef4444"/>
+    </marker>
+    <marker id="arrowPurple" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#6366f1"/>
+    </marker>
+  </defs>
+</svg>

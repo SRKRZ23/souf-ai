@@ -32,7 +32,7 @@
     {
       "property": "P6 signing latency @ N=1000",
       "status": "PASS",
-      "detail": "mean=0.1611ms  p50=0.1606ms  p99=0.1997ms  95%CI=[0.1600,0.1622]ms  target<1.0ms"
+      "detail": "mean=0.2581ms  p50=0.2160ms  p99=0.8426ms  95%CI=[0.2337,0.2881]ms  target<1.0ms"
     },
     {
       "property": "P7 chain integrity \u2014 splice detection",

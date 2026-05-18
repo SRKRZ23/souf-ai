@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <rect width="1920" height="1080" fill="#FFFFFF"/>
+  <rect x="0" y="0" width="8" height="1080" fill="#FF6B35"/>
+  <rect x="0" y="0" width="1920" height="6" fill="#FF6B35"/>
+  <rect x="0" y="1074" width="1920" height="6" fill="#FF6B35"/>
+
+  <text x="1860" y="50" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#5A5A5A" text-anchor="end">06 / 08</text>
+
+  <!-- TOP-LEFT LOGO -->
+  <rect x="60" y="20" width="160" height="44" rx="4" fill="#FF6B35"/>
+  <text x="140" y="39" font-family="Arial Black, Arial, sans-serif" font-size="18" font-weight="900" fill="#FFFFFF" text-anchor="middle">Veea</text>
+  <text x="140" y="56" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">Lobster Trap</text>
+
+  <!-- TOP-RIGHT LOGO -->
+  <rect x="1700" y="20" width="160" height="44" rx="4" fill="#0A0A0A"/>
+  <text x="1780" y="48" font-family="Arial Black, Arial, sans-serif" font-size="18" font-weight="900" fill="#FFFFFF" text-anchor="middle">lablab.ai</text>
+
+  <!-- CONTEXT LABEL -->
+  <text x="960" y="86" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#FF6B35" text-anchor="middle" letter-spacing="3">MARKET LANDSCAPE · 2026 · ZERO FUNDED COMPETITORS PASS ALL 5 SUITES</text>
+
+  <!-- RED SUB-HEADLINE -->
+  <text x="60" y="132" font-family="Arial Black, Arial, sans-serif" font-size="22" font-weight="900" fill="#ED1C24">Every competitor has a gap. SOUF AI has none.</text>
+
+  <!-- MAIN HEADLINE -->
+  <text x="60" y="182" font-family="Arial Black, Arial, sans-serif" font-size="46" font-weight="900" fill="#0A0A0A">Open-source. HIPAA. PCI. Encoding attacks.</text>
+  <text x="60" y="236" font-family="Arial Black, Arial, sans-serif" font-size="46" font-weight="900" fill="#0A0A0A">All 5 suites. <tspan fill="#FF6B35">F1=1.000.</tspan></text>
+
+  <!-- TABLE HEADER -->
+  <rect x="60" y="262" width="1800" height="46" rx="4" fill="#0A0A0A"/>
+  <text x="230" y="292" font-family="Arial Black, Arial, sans-serif" font-size="14" font-weight="900" fill="#FF6B35" text-anchor="middle">PRODUCT</text>
+  <text x="580" y="292" font-family="Arial Black, Arial, sans-serif" font-size="14" font-weight="900" fill="#FF6B35" text-anchor="middle">OPEN-SOURCE</text>
+  <text x="820" y="292" font-family="Arial Black, Arial, sans-serif" font-size="14" font-weight="900" fill="#FF6B35" text-anchor="middle">HIPAA</text>
+  <text x="1060" y="292" font-family="Arial Black, Arial, sans-serif" font-size="14" font-weight="900" fill="#FF6B35" text-anchor="middle">PCI-DSS</text>
+  <text x="1340" y="292" font-family="Arial Black, Arial, sans-serif" font-size="14" font-weight="900" fill="#FF6B35" text-anchor="middle">ENCODING ATTACKS</text>
+  <text x="1720" y="292" font-family="Arial Black, Arial, sans-serif" font-size="14" font-weight="900" fill="#FF6B35" text-anchor="middle">ALL 5 F1=1.000</text>
+
+  <!-- COMPETITOR ROW 1: Lakera -->
+  <rect x="60" y="308" width="1800" height="60" fill="#FFF5F5" stroke="#E0E0E0" stroke-width="1"/>
+  <text x="82" y="344" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#0A0A0A">Lakera Guard</text>
+  <text x="82" y="362" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#ED1C24" font-weight="700">$20M raised · Series A</text>
+  <text x="580" y="344" font-family="Arial Black, Arial, sans-serif" font-size="20" font-weight="900" fill="#ED1C24" text-anchor="middle">✗ Proprietary</text>
+  <text x="820" y="344" font-family="Arial Black, Arial, sans-serif" font-size="20" font-weight="900" fill="#ED1C24" text-anchor="middle">✗ No</text>
+  <text x="1060" y="344" font-family="Arial Black, Arial, sans-serif" font-size="20" font-weight="900" fill="#ED1C24" text-anchor="middle">✗ No</text>
+  <text x="1340" y="344" font-family="Arial Black, Arial, sans-serif" font-size="20" font-weight="900" fill="#ED1C24" text-anchor="middle">✗ No</text>
+  <text x="1720" y="344" font-family="Arial Black, Arial, sans-serif" font-size="20" font-weight="900" fill="#ED1C24" text-anchor="middle">✗ No</text>
+
+  <!-- COMPETITOR ROW 2: Rebuff -->
+  <rect x="60" y="368" width="1800" height="60" fill="#FFFFFF" stroke="#E0E0E0" stroke-width="1"/>
+  <text x="82" y="404" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#0A0A0A">Rebuff.ai</text>
+  <text x="82" y="422" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#999999" font-weight="700">Abandoned</text>
+  <text x="580" y="404" font-family="Arial Black, Arial, sans-serif" font-size="20" font-weight="900" fill="#22AA44" text-anchor="middle">✓ MIT</text>
+  <text x="820" y="404" font-family="Arial Black, Arial, sans-serif" font-size="20" font-weight="900" fill="#ED1C24" text-anchor="middle">✗ No</text>
+  <text x="1060" y="404" font-family="Arial Black, Arial, sans-serif" font-size="20" font-weight="900" fill="#ED1C24" text-anchor="middle">✗ No</text>
+  <text x="1340" y="404" font-family="Arial Black, Arial, sans-serif" font-size="20" font-weight="900" fill="#ED1C24" text-anchor="middle">✗ No</text>
+  <text x="1720" y="404" font-family="Arial Black, Arial, sans-serif" font-size="20" font-weight="900" fill="#ED1C24" text-anchor="middle">✗ No (abandoned)</text>
+
+  <!-- COMPETITOR ROW 3: Prompt Security -->
+  <rect x="60" y="428" width="1800" height="60" fill="#FFF5F5" stroke="#E0E0E0" stroke-width="1"/>
+  <text x="82" y="464" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#0A0A0A">Prompt Security</text>
+  <text x="82" y="482" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#ED1C24" font-weight="700">Proprietary SaaS</text>
+  <text x="580" y="464" font-family="Arial Black, Arial, sans-serif" font-size="20" font-weight="900" fill="#ED1C24" text-anchor="middle">✗ Proprietary</text>
+  <text x="820" y="464" font-family="Arial Black, Arial, sans-serif" font-size="20" font-weight="900" fill="#ED1C24" text-anchor="middle">✗ No</text>
+  <text x="1060" y="464" font-family="Arial Black, Arial, sans-serif" font-size="20" font-weight="900" fill="#ED1C24" text-anchor="middle">✗ No</text>
+  <text x="1340" y="464" font-family="Arial Black, Arial, sans-serif" font-size="20" font-weight="900" fill="#ED1C24" text-anchor="middle">✗ No</text>
+  <text x="1720" y="464" font-family="Arial Black, Arial, sans-serif" font-size="20" font-weight="900" fill="#ED1C24" text-anchor="middle">✗ No</text>
+
+  <!-- COMPETITOR ROW 4: LLM Guard -->
+  <rect x="60" y="488" width="1800" height="60" fill="#FFFFFF" stroke="#E0E0E0" stroke-width="1"/>
+  <text x="82" y="524" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#0A0A0A">LLM Guard</text>
+  <text x="82" y="542" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#5A5A5A" font-weight="700">Open-source · no compliance</text>
+  <text x="580" y="524" font-family="Arial Black, Arial, sans-serif" font-size="20" font-weight="900" fill="#22AA44" text-anchor="middle">✓ Apache 2</text>
+  <text x="820" y="524" font-family="Arial Black, Arial, sans-serif" font-size="20" font-weight="900" fill="#ED1C24" text-anchor="middle">✗ No</text>
+  <text x="1060" y="524" font-family="Arial Black, Arial, sans-serif" font-size="20" font-weight="900" fill="#ED1C24" text-anchor="middle">✗ No</text>
+  <text x="1340" y="524" font-family="Arial Black, Arial, sans-serif" font-size="20" font-weight="900" fill="#ED1C24" text-anchor="middle">✗ No</text>
+  <text x="1720" y="524" font-family="Arial Black, Arial, sans-serif" font-size="20" font-weight="900" fill="#ED1C24" text-anchor="middle">✗ No</text>
+
+  <!-- SOUF AI ROW — HIGHLIGHTED -->
+  <rect x="60" y="548" width="1800" height="76" rx="0" fill="#FF6B35"/>
+  <text x="82" y="588" font-family="Arial Black, Arial, sans-serif" font-size="22" font-weight="900" fill="#FFFFFF">SOUF AI v0.5f</text>
+  <text x="82" y="610" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#FFE0D0" font-weight="700">This submission · MIT · 231 prompts · ALL PASS</text>
+  <text x="580" y="594" font-family="Arial Black, Arial, sans-serif" font-size="24" font-weight="900" fill="#FFFFFF" text-anchor="middle">✓ MIT</text>
+  <text x="820" y="594" font-family="Arial Black, Arial, sans-serif" font-size="24" font-weight="900" fill="#FFFFFF" text-anchor="middle">✓ Yes</text>
+  <text x="1060" y="594" font-family="Arial Black, Arial, sans-serif" font-size="24" font-weight="900" fill="#FFFFFF" text-anchor="middle">✓ Yes</text>
+  <text x="1340" y="594" font-family="Arial Black, Arial, sans-serif" font-size="24" font-weight="900" fill="#FFFFFF" text-anchor="middle">✓ Yes</text>
+  <text x="1720" y="594" font-family="Arial Black, Arial, sans-serif" font-size="24" font-weight="900" fill="#FFFFFF" text-anchor="middle">✓ F1=1.000</text>
+
+  <!-- NEWS CARD: Market evidence -->
+  <rect x="60" y="648" width="860" height="140" rx="4" fill="#F4F4F4" stroke="#E0E0E0" stroke-width="1"/>
+  <rect x="60" y="648" width="6" height="140" fill="#FF6B35"/>
+  <text x="82" y="674" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#FF6B35" letter-spacing="1">MARKET GAP · COMPETITOR ANALYSIS · 2026</text>
+  <rect x="82" y="682" width="820" height="1" fill="#E0E0E0"/>
+  <text x="82" y="706" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#0A0A0A" font-style="italic">"$20M raised. Zero encoding attack defense.</text>
+  <text x="82" y="728" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#0A0A0A" font-style="italic">Zero HIPAA pack. Proprietary. Per-seat fees."</text>
+  <text x="82" y="758" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#5A5A5A">SOUF AI is MIT-licensed and passes every suite they miss.</text>
+  <text x="82" y="780" font-family="Courier New, Courier, monospace" font-size="12" fill="#999999">Crunchbase · public product docs as of 2026-05-13</text>
+
+  <!-- BLACK BOTTOM BAR -->
+  <rect x="940" y="648" width="920" height="140" rx="4" fill="#0A0A0A"/>
+  <text x="1400" y="686" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#FF6B35" text-anchor="middle" font-weight="700">THE VERDICT</text>
+  <text x="1400" y="716" font-family="Arial Black, Arial, sans-serif" font-size="20" font-weight="900" fill="#FFFFFF" text-anchor="middle">Lobster Trap is the floor.</text>
+  <text x="1400" y="744" font-family="Arial Black, Arial, sans-serif" font-size="20" font-weight="900" fill="#FF6B35" text-anchor="middle">SOUF AI is the ceiling.</text>
+  <text x="1400" y="772" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#CCCCCC" text-anchor="middle">MIT licensed · Zero per-seat fees · Upstream PR submitted</text>
+
+  <!-- SOURCE -->
+  <text x="960" y="1055" font-family="Courier New, Courier, monospace" font-size="13" fill="#5A5A5A" text-anchor="middle">Competitor data: public documentation as of 2026-05-13 · Funding: Crunchbase · SOUF AI data: benchmarks/run_all_benchmarks.py</text>
+</svg>

@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <rect width="1920" height="1080" fill="#FFFFFF"/>
+  <rect x="0" y="0" width="8" height="1080" fill="#FF6B35"/>
+  <rect x="0" y="0" width="1920" height="6" fill="#FF6B35"/>
+  <rect x="0" y="1074" width="1920" height="6" fill="#FF6B35"/>
+
+  <text x="1860" y="50" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#5A5A5A" text-anchor="end">08 / 08</text>
+
+  <!-- TOP-LEFT LOGO -->
+  <rect x="60" y="20" width="160" height="44" rx="4" fill="#FF6B35"/>
+  <text x="140" y="39" font-family="Arial Black, Arial, sans-serif" font-size="18" font-weight="900" fill="#FFFFFF" text-anchor="middle">Veea</text>
+  <text x="140" y="56" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">Lobster Trap</text>
+
+  <!-- TOP-RIGHT LOGO -->
+  <rect x="1700" y="20" width="160" height="44" rx="4" fill="#0A0A0A"/>
+  <text x="1780" y="48" font-family="Arial Black, Arial, sans-serif" font-size="18" font-weight="900" fill="#FFFFFF" text-anchor="middle">lablab.ai</text>
+
+  <!-- CONTEXT LABEL -->
+  <text x="960" y="86" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#FF6B35" text-anchor="middle" letter-spacing="3">OPEN SOURCE · MIT · REPRODUCIBLE · VERIFIABLE · UPSTREAM PR SUBMITTED</text>
+
+  <!-- SOUF AI WORDMARK medium -->
+  <text x="960" y="172" font-family="Arial Black, Arial, sans-serif" font-size="96" font-weight="900" fill="#0A0A0A" text-anchor="middle" letter-spacing="-2">SOUF AI</text>
+  <text x="960" y="208" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#5A5A5A" text-anchor="middle" letter-spacing="6">SECURE OUTPUT FIREWALL</text>
+
+  <!-- GITHUB MONOSPACE BOLD -->
+  <text x="960" y="276" font-family="Courier New, Courier, monospace" font-size="52" font-weight="700" fill="#0A0A0A" text-anchor="middle">github.com/SRKRZ23/souf-ai</text>
+
+  <!-- Orange underline -->
+  <rect x="160" y="290" width="1600" height="5" fill="#FF6B35"/>
+
+  <!-- EVIDENCE PACK BOX -->
+  <rect x="60" y="316" width="1800" height="92" rx="4" fill="#0A0A0A"/>
+  <text x="960" y="348" font-family="Arial Black, Arial, sans-serif" font-size="16" font-weight="900" fill="#FF6B35" text-anchor="middle">FULL EVIDENCE PACK</text>
+  <text x="960" y="374" font-family="Courier New, Courier, monospace" font-size="16" fill="#FFFFFF" text-anchor="middle">python scripts/run_all_benchmarks.py → 231 prompts · 5 benchmarks · ALL PASS</text>
+  <text x="960" y="398" font-family="Courier New, Courier, monospace" font-size="15" fill="#CCCCCC" text-anchor="middle">Ed25519 audit chain · Wilson 95% CI computed from 231 prompts (TP=188, TN=43)</text>
+
+  <!-- REPRODUCE COMMAND -->
+  <rect x="60" y="428" width="1800" height="60" rx="4" fill="#F4F4F4" stroke="#E0E0E0" stroke-width="1"/>
+  <rect x="60" y="428" width="6" height="60" fill="#FF6B35"/>
+  <text x="82" y="450" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#FF6B35">REPRODUCE IN 2 COMMANDS:</text>
+  <text x="82" y="478" font-family="Courier New, Courier, monospace" font-size="19" fill="#0A0A0A">git clone github.com/SRKRZ23/souf-ai  &amp;&amp;  python scripts/run_all_benchmarks.py  →  Total: 231 prompts | ALL PASS</text>
+
+  <!-- STATS ROW -->
+  <rect x="60" y="508" width="340" height="84" rx="4" fill="#FF6B35"/>
+  <text x="230" y="540" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#FFFFFF" text-anchor="middle" font-weight="700">F1 SCORE</text>
+  <text x="230" y="578" font-family="Arial Black, Arial, sans-serif" font-size="40" font-weight="900" fill="#FFFFFF" text-anchor="middle">1.000</text>
+
+  <rect x="418" y="508" width="280" height="84" rx="4" fill="#0A0A0A"/>
+  <text x="558" y="540" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#FF6B35" text-anchor="middle" font-weight="700">FALSE POS</text>
+  <text x="558" y="578" font-family="Arial Black, Arial, sans-serif" font-size="40" font-weight="900" fill="#FFFFFF" text-anchor="middle">0</text>
+
+  <rect x="716" y="508" width="280" height="84" rx="4" fill="#0A0A0A"/>
+  <text x="856" y="540" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#FF6B35" text-anchor="middle" font-weight="700">FALSE NEG</text>
+  <text x="856" y="578" font-family="Arial Black, Arial, sans-serif" font-size="40" font-weight="900" fill="#FFFFFF" text-anchor="middle">0</text>
+
+  <rect x="1014" y="508" width="320" height="84" rx="4" fill="#F4F4F4" stroke="#E0E0E0" stroke-width="1"/>
+  <rect x="1014" y="508" width="6" height="84" fill="#FF6B35"/>
+  <text x="1174" y="540" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#5A5A5A" text-anchor="middle" font-weight="700">P99 LATENCY</text>
+  <text x="1174" y="578" font-family="Arial Black, Arial, sans-serif" font-size="40" font-weight="900" fill="#0A0A0A" text-anchor="middle">0.111ms</text>
+
+  <rect x="1352" y="508" width="508" height="84" rx="4" fill="#F4F4F4" stroke="#E0E0E0" stroke-width="1"/>
+  <rect x="1352" y="508" width="6" height="84" fill="#FF6B35"/>
+  <text x="1606" y="540" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#5A5A5A" text-anchor="middle" font-weight="700">THROUGHPUT</text>
+  <text x="1606" y="578" font-family="Arial Black, Arial, sans-serif" font-size="40" font-weight="900" fill="#0A0A0A" text-anchor="middle">17,553 req/s</text>
+
+  <!-- SARDOR CREDENTIALS -->
+  <rect x="60" y="616" width="1800" height="80" rx="4" fill="#F8F8F8" stroke="#E0E0E0" stroke-width="1"/>
+  <rect x="60" y="616" width="6" height="80" fill="#FF6B35"/>
+  <text x="82" y="646" font-family="Arial Black, Arial, sans-serif" font-size="18" font-weight="900" fill="#0A0A0A">Sardor Razikov · Independent ML Engineer · Top 1.9% Kaggle SPR · Zenodo Author</text>
+  <text x="82" y="676" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#5A5A5A">ORCID: 0009-0007-0731-4247 · GitHub: SRKRZ23 · X: @SardorRazi99093 · Tashkent, Uzbekistan</text>
+
+  <!-- CALL TO ACTION BOXES -->
+  <rect x="60" y="716" width="560" height="100" rx="4" fill="#F4F4F4" stroke="#E0E0E0" stroke-width="1"/>
+  <rect x="60" y="716" width="6" height="100" fill="#FF6B35"/>
+  <text x="82" y="748" font-family="Arial Black, Arial, sans-serif" font-size="17" font-weight="900" fill="#FF6B35">STAR THE REPO</text>
+  <text x="82" y="772" font-family="Courier New, Courier, monospace" font-size="15" fill="#0A0A0A">github.com/SRKRZ23/souf-ai</text>
+  <text x="82" y="806" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#5A5A5A">MIT · HIPAA · PCI-DSS · Encoding attacks</text>
+
+  <rect x="640" y="716" width="560" height="100" rx="4" fill="#F4F4F4" stroke="#E0E0E0" stroke-width="1"/>
+  <rect x="640" y="716" width="6" height="100" fill="#ED1C24"/>
+  <text x="662" y="748" font-family="Arial Black, Arial, sans-serif" font-size="17" font-weight="900" fill="#ED1C24">UPSTREAM PR SUBMITTED</text>
+  <text x="662" y="772" font-family="Courier New, Courier, monospace" font-size="15" fill="#0A0A0A">veeainc/lobstertrap · PR #open</text>
+  <text x="662" y="806" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#5A5A5A">SOUF AI patterns → Lobster Trap core</text>
+
+  <rect x="1220" y="716" width="640" height="100" rx="4" fill="#0A0A0A"/>
+  <text x="1540" y="748" font-family="Arial Black, Arial, sans-serif" font-size="17" font-weight="900" fill="#FF6B35" text-anchor="middle">WILSON 95% CI</text>
+  <text x="1540" y="778" font-family="Arial Black, Arial, sans-serif" font-size="20" font-weight="900" fill="#FFFFFF" text-anchor="middle">DENY: [0.980, 1.000]</text>
+  <text x="1540" y="806" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#CCCCCC" text-anchor="middle">ALLOW: [0.918, 1.000] · n=231</text>
+
+  <!-- ORANGE BOTTOM BAR -->
+  <rect x="60" y="838" width="1800" height="64" rx="4" fill="#FF6B35"/>
+  <text x="960" y="866" font-family="Arial Black, Arial, sans-serif" font-size="18" font-weight="900" fill="#FFFFFF" text-anchor="middle">TechEx Intelligent Enterprise Solutions Hackathon · Track 1: Agent Security &amp; AI Governance · May 2026</text>
+  <text x="960" y="892" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#FFE0D0" text-anchor="middle">EU AI Act compliant · OWASP LLM01 · HIPAA · PCI-DSS · MIT License · Reproducible · Verifiable</text>
+
+  <!-- SOURCE -->
+  <text x="960" y="1055" font-family="Courier New, Courier, monospace" font-size="13" fill="#5A5A5A" text-anchor="middle">github.com/SRKRZ23/souf-ai · scripts/run_all_benchmarks.py · benchmarks/ · All claims empirically verified · 231 prompts | ALL PASS</text>
+</svg>

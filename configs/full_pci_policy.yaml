@@ -130,18 +130,14 @@ ingress_rules:
     match_type: boolean
     value: true
 - name: block_pii_request
-  description: Prompt is requesting personal/sensitive information
+  description: High-confidence PII requests only — PCI educational queries excluded via pci_block_pan_disclosure_request (priority 102)
   priority: 82
-  action: DENY
-  deny_message: '[LOBSTER TRAP] Blocked: request for personal/sensitive information
-    detected.'
+  action: LOG
+  deny_message: '[LOBSTER TRAP] Logged: possible PII request — risk below block threshold.'
   conditions:
   - field: contains_pii_request
     match_type: boolean
     value: true
-  - field: risk_score
-    match_type: threshold
-    value: 0.35
 - name: block_dangerous_commands
   description: Dangerous system commands detected
   priority: 80

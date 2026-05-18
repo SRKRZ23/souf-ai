@@ -186,7 +186,24 @@ All four benchmarks achieve perfect detection (Table 2):
 | admin_impersonation | 2 | 2 | Req 8.3 |
 | vuln_scan_payment | 3 | 3 | Req 11.4 |
 
-### 4.5 Audit Chain Properties
+### 4.5 Encoding Attack Benchmark (Benchmark #5, v0.5d)
+
+A fifth benchmark tests evasion via encoding obfuscation (n=23: 18 attacks + 5 benign):
+
+| Category | TP | FN | FP | Block rate |
+|---|---|---|---|---|
+| base64_meta (decode+execute) | 5 | 0 | 0 | **100%** |
+| token_split (char-by-char split) | 5 | 0 | 0 | **100%** |
+| fullwidth_unicode (NFKC-normalizable) | 4 | 0 | 0 | **100%** |
+| cyrillic_lookalike (arch. boundary) | 0 | 4 | 0 | 0% (v0.6) |
+| benign_encoding | 0 | — | **0** | — |
+| **Overall** | **14** | **4** | **0** | **77.8%** |
+
+Precision=1.000, Recall=0.778, F1=0.875. **Structural attacks (non-Cyrillic): 14/14 = 100%.**
+
+Cyrillic lookalike FNs are an architectural boundary condition: NFKC normalization resolves fullwidth Latin (e.g., ｊａｉｌｂｒｅａｋ → jailbreak) but does not map Cyrillic/Greek visually-similar characters (e.g., Cyrillic р U+0440, Greek ι U+03B9) to Latin equivalents. Mitigation requires Unicode confusable mapping (ICU `confusables.txt`); scoped for v0.6.
+
+### 4.6 Audit Chain Properties
 
 All 7 properties PASS (Table 3):
 
@@ -247,7 +264,7 @@ The risk_score composite signal (0.0–1.0) cannot differentiate adversarial fro
 ## 7. Limitations
 
 1. **Benchmark scale**: Vertical subsets (n=20) are small; production deployment requires larger held-out evaluation sets.
-2. **Adversarial evasion**: Sufficiently sophisticated encoding/obfuscation may evade regex. The ObfuscationPatterns set addresses common cases (base64, rot13, hex) but not novel encodings.
+2. **Adversarial evasion**: Encoding attacks are partially mitigated in v0.5d (77.8% on Benchmark #5; 100% on structural sub-classes). Cyrillic/Greek Unicode lookalike attacks require a confusable-mapping layer (v0.6 scope). Novel multi-layer encodings not represented in current benchmarks remain an open FN class.
 3. **False negative floor**: At 100% OOD recall, further novel attack variants may arise from new LLM capabilities or agentic tool chains not present in current benchmarks.
 4. **Language coverage**: All patterns target English-language prompts. Multilingual coverage requires separate pattern sets.
 
@@ -255,7 +272,7 @@ The risk_score composite signal (0.0–1.0) cannot differentiate adversarial fro
 
 ## 8. Conclusion
 
-SOUF AI demonstrates that network-security techniques—compiled regex DPI, P4 match-action policies, Ed25519-signed audit chains—can provide deterministic, sub-millisecond LLM governance with provable audit properties. Empirical results across 208 benchmark prompts show perfect detection (F1=1.000) with zero false positives. The HIPAA and PCI-DSS policy packs extend general-purpose Lobster Trap with sector-specific compliance citations, enabling operators to demonstrate regulatory mapping for AI agent deployments.
+SOUF AI demonstrates that network-security techniques—compiled regex DPI, P4 match-action policies, Ed25519-signed audit chains—can provide deterministic, sub-millisecond LLM governance with provable audit properties. Empirical results across 231 benchmark prompts (208 structured + 23 encoding) show F1=1.000 on the first four benchmarks and F1=0.875 on encoding attacks (Benchmark #5), with zero false positives across all five benchmarks. The HIPAA and PCI-DSS policy packs extend general-purpose Lobster Trap with sector-specific compliance citations, enabling operators to demonstrate regulatory mapping for AI agent deployments. The encoding attack benchmark establishes an honest measurement of the architectural boundary between regex-based DPI (handles structural and normalized-Unicode attacks) and confusable-mapping layers (required for Cyrillic/Greek lookalikes).
 
 All code, benchmarks, and results are open-source at the SOUF AI repository.
 

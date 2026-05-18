@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <!-- White background -->
+  <rect width="400" height="400" fill="#FFFFFF"/>
+
+  <!-- Left vertical stripe -->
+  <rect x="0" y="0" width="8" height="400" fill="#FF6B35"/>
+
+  <!-- Shield shape: orange filled polygon -->
+  <polygon points="200,40 295,80 295,195 200,265 105,195 105,80" fill="#FF6B35"/>
+
+  <!-- Inner shield (white) for depth effect -->
+  <polygon points="200,58 280,93 280,188 200,252 120,188 120,93" fill="#FFFFFF"/>
+
+  <!-- Shield orange fill inner area -->
+  <polygon points="200,68 272,100 272,183 200,242 128,183 128,100" fill="#FF6B35"/>
+
+  <!-- "S" letter inside shield -->
+  <text x="200" y="185" font-family="-apple-system, 'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="110" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle">S</text>
+
+  <!-- "SOUF AI" text below shield -->
+  <text x="200" y="310" font-family="-apple-system, 'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="42" fill="#0A0A0A" text-anchor="middle" letter-spacing="4">SOUF AI</text>
+
+  <!-- Subtitle -->
+  <text x="200" y="350" font-family="-apple-system, 'Helvetica Neue', Arial, sans-serif" font-weight="400" font-size="14" fill="#5A5A5A" text-anchor="middle" letter-spacing="2">SECURE OUTPUT FIREWALL</text>
+
+  <!-- F1=1.000 badge -->
+  <rect x="130" y="368" width="140" height="22" rx="4" fill="#FF6B35"/>
+  <text x="200" y="383" font-family="-apple-system, 'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="12" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">F1 = 1.000 · 231 PROMPTS</text>
+</svg>

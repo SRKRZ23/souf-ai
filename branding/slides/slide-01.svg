@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <!-- Base: white background + orange stripes -->
+  <rect width="1920" height="1080" fill="#FFFFFF"/>
+  <rect x="0" y="0" width="8" height="1080" fill="#FF6B35"/>
+  <rect x="0" y="0" width="1920" height="6" fill="#FF6B35"/>
+  <rect x="0" y="1074" width="1920" height="6" fill="#FF6B35"/>
+
+  <!-- SLIDE NUMBER -->
+  <text x="1860" y="50" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#5A5A5A" text-anchor="end">01 / 08</text>
+
+  <!-- TOP-LEFT LOGO: Veea / Lobster Trap -->
+  <rect x="60" y="20" width="160" height="44" rx="4" fill="#FF6B35"/>
+  <text x="140" y="39" font-family="Arial Black, Arial, sans-serif" font-size="18" font-weight="900" fill="#FFFFFF" text-anchor="middle">Veea</text>
+  <text x="140" y="56" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">Lobster Trap</text>
+
+  <!-- TOP-RIGHT LOGO: lablab.ai -->
+  <rect x="1700" y="20" width="160" height="44" rx="4" fill="#0A0A0A"/>
+  <text x="1780" y="48" font-family="Arial Black, Arial, sans-serif" font-size="18" font-weight="900" fill="#FFFFFF" text-anchor="middle">lablab.ai</text>
+
+  <!-- CONTEXT LABEL -->
+  <text x="960" y="86" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#FF6B35" text-anchor="middle" letter-spacing="3" font-variant="small-caps">TECHEX HACKATHON 2026 · TRACK 1: AGENT SECURITY · VEEA SPONSOR</text>
+
+  <!-- SOUF AI WORDMARK -->
+  <text x="960" y="300" font-family="Arial Black, Arial, sans-serif" font-size="200" font-weight="900" fill="#0A0A0A" text-anchor="middle" letter-spacing="-6">SOUF AI</text>
+
+  <!-- SECURE OUTPUT FIREWALL -->
+  <text x="960" y="348" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#5A5A5A" text-anchor="middle" letter-spacing="8">SECURE OUTPUT FIREWALL</text>
+
+  <!-- Orange rule -->
+  <rect x="280" y="366" width="1360" height="4" fill="#FF6B35"/>
+
+  <!-- ORANGE BADGE: F1 stat -->
+  <rect x="310" y="392" width="1300" height="72" rx="6" fill="#FF6B35"/>
+  <text x="960" y="435" font-family="Arial Black, Arial, sans-serif" font-size="28" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">F1 = 1.000 across 231 adversarial prompts · 0 false positives · 0 false negatives</text>
+  <text x="960" y="458" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#FFE0D0" text-anchor="middle">Wilson 95% CI DENY: [0.980, 1.000]  ·  5 independent test suites  ·  HIPAA + PCI-DSS compliant</text>
+
+  <!-- Divider -->
+  <rect x="460" y="490" width="1000" height="2" fill="#E0E0E0"/>
+
+  <!-- SARDOR CREDENTIALS -->
+  <text x="960" y="530" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#5A5A5A" text-anchor="middle">Sardor Razikov · Independent ML Engineer · Top 1.9% Kaggle SPR · Zenodo Author · Tashkent, Uzbekistan</text>
+
+  <!-- ORCID line -->
+  <text x="960" y="558" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#999999" text-anchor="middle">ORCID: 0009-0007-0731-4247 · github.com/SRKRZ23/souf-ai</text>
+
+  <!-- TRACK TARGETING -->
+  <text x="960" y="598" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#5A5A5A" text-anchor="middle">Track 1: Agent Security · Veea Award Stack · NVIDIA DGX Spark Prize</text>
+
+  <!-- BOTTOM: EU AI Act urgency -->
+  <rect x="60" y="636" width="1800" height="52" rx="4" fill="#0A0A0A"/>
+  <text x="960" y="659" font-family="Arial Black, Arial, sans-serif" font-size="17" font-weight="900" fill="#FF6B35" text-anchor="middle">EU AI ACT ENFORCEMENT: AUGUST 2, 2026</text>
+  <text x="960" y="679" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#CCCCCC" text-anchor="middle">€30M fines · Article 9 risk management mandatory · Zero open-source compliant proxies exist today</text>
+
+  <!-- Three key proof points -->
+  <rect x="60" y="710" width="570" height="80" rx="4" fill="#F4F4F4" stroke="#E0E0E0" stroke-width="1"/>
+  <rect x="60" y="710" width="6" height="80" fill="#FF6B35"/>
+  <text x="90" y="742" font-family="Arial Black, Arial, sans-serif" font-size="36" font-weight="900" fill="#FF6B35">100%</text>
+  <text x="90" y="770" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#5A5A5A">Block rate · 48/48 OWASP LLM01 prompts</text>
+
+  <rect x="675" y="710" width="570" height="80" rx="4" fill="#F4F4F4" stroke="#E0E0E0" stroke-width="1"/>
+  <rect x="675" y="710" width="6" height="80" fill="#ED1C24"/>
+  <text x="705" y="742" font-family="Arial Black, Arial, sans-serif" font-size="36" font-weight="900" fill="#0A0A0A">0.111ms</text>
+  <text x="705" y="770" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#5A5A5A">P99 latency · 17,553 req/s throughput</text>
+
+  <rect x="1290" y="710" width="570" height="80" rx="4" fill="#F4F4F4" stroke="#E0E0E0" stroke-width="1"/>
+  <rect x="1290" y="710" width="6" height="80" fill="#0A0A0A"/>
+  <text x="1320" y="742" font-family="Arial Black, Arial, sans-serif" font-size="36" font-weight="900" fill="#0A0A0A">MIT</text>
+  <text x="1320" y="770" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#5A5A5A">Open-source · Upstream PR to veeainc/lobstertrap</text>
+
+  <!-- SOURCE CITATION -->
+  <text x="960" y="1055" font-family="Courier New, Courier, monospace" font-size="13" fill="#5A5A5A" text-anchor="middle">Sources: github.com/SRKRZ23/souf-ai · benchmarks/run_all_benchmarks.py · 231 prompts · ALL PASS · eur-lex.europa.eu/AI-Act</text>
+</svg>

@@ -68,7 +68,10 @@ def run_single(prompt_text: str, policy_path: str | None = None) -> dict:
     """Invoke lobstertrap inspect on a single prompt."""
     cmd = [str(LT_BIN), "inspect", prompt_text]
     if policy_path:
-        cmd = [str(LT_BIN), "inspect", "--policy", policy_path, prompt_text]
+        # Resolve to absolute path — binary runs with cwd=LT_ROOT so relative paths
+        # would be evaluated from external/lobstertrap, not the souf-ai project root.
+        abs_policy = str(Path(policy_path).resolve())
+        cmd = [str(LT_BIN), "inspect", "--policy", abs_policy, prompt_text]
     try:
         result = subprocess.run(
             cmd,
@@ -231,6 +234,19 @@ def main():
     args = parser.parse_args()
 
     data_path = Path(args.data) if args.data else BENCH_DATA
+
+    # Auto-select vertical policy if not explicitly provided
+    if not args.policy:
+        data_name = data_path.stem.lower()
+        _policy_dir = ROOT / "configs"
+        if "pci" in data_name:
+            _auto = _policy_dir / "full_pci_policy.yaml"
+            if _auto.exists():
+                args.policy = str(_auto)
+        elif "hipaa" in data_name:
+            _auto = _policy_dir / "full_hipaa_policy.yaml"
+            if _auto.exists():
+                args.policy = str(_auto)
 
     if not LT_BIN.exists():
         print(f"ERROR: lobstertrap binary not found at {LT_BIN}", file=sys.stderr)
