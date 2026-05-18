@@ -44,8 +44,8 @@
 
   <!-- Metric 4: Rules -->
   <rect x="1140" y="510" width="240" height="110" rx="4" fill="#0A0A0A"/>
-  <text x="1260" y="558" font-family="-apple-system, 'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="42" fill="#FF6B35" text-anchor="middle">254+ rules</text>
-  <text x="1260" y="600" font-family="-apple-system, 'Helvetica Neue', Arial, sans-serif" font-weight="400" font-size="16" fill="#FFFFFF" text-anchor="middle">11 PatternSets</text>
+  <text x="1260" y="558" font-family="-apple-system, 'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="42" fill="#FF6B35" text-anchor="middle">337 rules</text>
+  <text x="1260" y="600" font-family="-apple-system, 'Helvetica Neue', Arial, sans-serif" font-weight="400" font-size="16" fill="#FFFFFF" text-anchor="middle">16 PatternSets</text>
 
   <!-- Metric 5: 0 FP -->
   <rect x="1400" y="510" width="200" height="110" rx="4" fill="#FF6B35"/>

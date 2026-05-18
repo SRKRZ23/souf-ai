@@ -1,8 +1,9 @@
 # SOUF AI — Video Recording Script (Target: 3:30)
 
-**Total scenes:** 8 · **Target length:** 3:00–3:45 · **Export:** 1080p H.264 ≤6 Mbps (lablab 300MB cap)
+**Total scenes:** 9 · **Target length:** 3:00–3:45 · **Export:** 1080p H.264 ≤6 Mbps (lablab 300MB cap)
 **Voice:** TTSmaker (Alfie US Male V2 — same as FORGE/CITADEL)
 **Background music:** soft electronic, -22 dB under voice
+**Competitive context (lablab liveboard 2026-05-18 18:58):** TechEx has 93 submissions on Veea Agent Security track, 39 teams using Lobster Trap. Top competitors on track: PromptGuard-AI (#6, 12 votes), Trusyn AI (#7, 8 votes), WarRoom (#9, 7 votes), Pantheon (#10, 6 votes). Differentiation angle: SOUF AI is the only one with F1=1.000 + Wilson CIs + tamper-evident audit + built-in HIPAA/PCI packs + MIT license.
 
 ---
 
@@ -72,19 +73,27 @@ Total: 231 prompts | ALL PASS | 3.3s
 
 ---
 
-## Scene 7 — Comparison vs commercial (2:40 – 3:10)
+## Scene 7 — Comparison vs commercial (2:40 – 3:00)
 
-**Visual:** `branding/slides/slide-05.png` (or comparison table screenshot from competitive_comparison.md)
+**Visual:** `branding/slides/slide-09.png` (NEW — 9-row comparison matrix vs Lakera Guard / NeMo Guardrails / Prompt Guard 2)
 **Voiceover:**
-> "Lakera Guard, NVIDIA NeMo Guardrails, Meta Prompt Guard — each is a strong commercial guardrail. SOUF AI is the only one with sub-millisecond inline DPI, built-in HIPAA and PCI-DSS packs, a tamper-evident audit chain, and Wilson 95-percent confidence intervals on every metric. MIT licensed. Self-hosted. Zero cost."
+> "Here's the comparison every enterprise asks about. Lakera Guard, NVIDIA NeMo Guardrails, Meta Prompt Guard — each is a strong product. SOUF AI is the only one with sub-millisecond latency, offline operation, built-in HIPAA and PCI-DSS packs, a tamper-evident audit chain, Wilson confidence intervals, MIT license, and zero cost. Six wins on the same matrix."
 
 ---
 
-## Scene 8 — Outro (3:10 – 3:30)
+## Scene 8 — Ecosystem (3:00 – 3:15)
+
+**Visual:** `branding/slides/slide-07.png` (ecosystem diagram: FORGE → SOUF AI → CITADEL → ATLAS)
+**Voiceover:**
+> "SOUF AI is the governance core of a four-product ecosystem. FORGE generates policies. CITADEL evaluates models. ATLAS routes agents. Same audit chain across all four."
+
+---
+
+## Scene 9 — Outro (3:15 – 3:30)
 
 **Visual:** `branding/slides/slide-08.png` (final CTA — GitHub URL, lablab team URL)
 **Voiceover:**
-> "SOUF AI. Built solo from Tashkent for the TechEx Veea hackathon. Repo at github dot com slash S R K R Z 2 3 slash souf hyphen A I. Lobster Trap is the floor. We're the ceiling."
+> "SOUF AI. Built solo from Tashkent. Repo at github dot com slash S R K R Z 2 3 slash souf hyphen A I. Lobster Trap is the floor. We're the ceiling."
 
 ---
 
