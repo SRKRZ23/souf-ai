@@ -1,5 +1,9 @@
 # SOUF AI — TechEx Hackathon Submission (lablab × Veea × DeepMind)
 
+**Video (3 min):** https://youtu.be/IwLt1OTehcQ
+**GitHub:** https://github.com/SRKRZ23/souf-ai
+**Pitch deck:** submissions/SOUF_AI_pitch_deck.pdf (9 slides, 1.5MB)
+
 ## Project Name
 SOUF AI — Semantic Out-of-distribution Universal Firewall for AI
 

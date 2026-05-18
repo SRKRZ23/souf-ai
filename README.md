@@ -4,6 +4,10 @@
 
 **TechEx Hackathon 2026 · Track 1: Agent Security & AI Governance · Veea**
 
+**🎥 Video walkthrough (3 min):** [https://youtu.be/IwLt1OTehcQ](https://youtu.be/IwLt1OTehcQ)
+**🧪 Reproduce in 5 seconds:** `python3 scripts/run_all_benchmarks.py` → 231 prompts, F1=1.000
+**📊 Pitch deck (9 slides):** [submissions/SOUF_AI_pitch_deck.pdf](submissions/SOUF_AI_pitch_deck.pdf)
+
 ![SOUF AI banner](branding/souf_ai_banner.png)
 
 ### Architecture
