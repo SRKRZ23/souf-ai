@@ -98,13 +98,13 @@ Verified by 7/7 audit chain tests.
 
 | Property | SOUF AI v0.5f | Lakera Guard | NeMo Guardrails | Prompt Guard 2 |
 |---|---|---|---|---|
-| Latency P50 | **0.051 ms** | ~40–80 ms | ~5–50 ms | ~10–30 ms |
+| Latency P50 | **0.051 ms** | not published | not published | 92.4 ms (A100) |
 | Offline / air-gapped | **✅** | ❌ | ✅ | ✅ |
 | Built-in HIPAA pack | **✅ F1=1.000** | guides only | custom Colang | ❌ |
 | Built-in PCI-DSS pack | **✅ F1=1.000** | partial | custom Colang | ❌ |
 | Audit chain (Ed25519) | **✅ tamper-evident** | request logs | trace logs | ❌ |
 | Wilson 95% CI reported | **✅** | ❌ | ❌ | ❌ |
-| License | **MIT** | Closed | Apache 2.0 | Llama 3 Community |
+| License | **MIT** | Closed | Apache 2.0 | mDeBERTa MIT |
 
 Full comparison: `docs/competitive_comparison.md`. SOUF AI numbers measured via `scripts/run_all_benchmarks.py` (3.3s, 231 prompts). Competitor numbers cited from public docs.
 

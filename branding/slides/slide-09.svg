@@ -47,9 +47,9 @@
   <rect x="1440" y="316" width="400" height="56" fill="#FFFFFF"/>
   <text x="100" y="352" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#0A0A0A">Latency P50</text>
   <text x="740" y="352" font-family="Arial Black, sans-serif" font-size="22" font-weight="900" fill="#FF6B35" text-anchor="middle">0.051 ms</text>
-  <text x="1030" y="352" font-family="Arial, sans-serif" font-size="17" fill="#5A5A5A" text-anchor="middle">~40–80 ms (SaaS)</text>
-  <text x="1300" y="352" font-family="Arial, sans-serif" font-size="17" fill="#5A5A5A" text-anchor="middle">~5–50 ms</text>
-  <text x="1640" y="352" font-family="Arial, sans-serif" font-size="17" fill="#5A5A5A" text-anchor="middle">~10–30 ms (BERT)</text>
+  <text x="1030" y="352" font-family="Arial, sans-serif" font-size="17" fill="#5A5A5A" text-anchor="middle">not published</text>
+  <text x="1300" y="352" font-family="Arial, sans-serif" font-size="17" fill="#5A5A5A" text-anchor="middle">not published</text>
+  <text x="1640" y="352" font-family="Arial, sans-serif" font-size="17" fill="#5A5A5A" text-anchor="middle">92.4 ms (A100)</text>
 
   <!-- Row 2: Throughput -->
   <rect x="80" y="372" width="500" height="56" fill="#FFFFFF"/>
@@ -133,7 +133,7 @@
   <text x="740" y="744" font-family="Arial Black, sans-serif" font-size="22" font-weight="900" fill="#FF6B35" text-anchor="middle">MIT</text>
   <text x="1030" y="744" font-family="Arial, sans-serif" font-size="17" fill="#C0392B" text-anchor="middle">Commercial closed</text>
   <text x="1300" y="744" font-family="Arial, sans-serif" font-size="17" fill="#5A5A5A" text-anchor="middle">Apache 2.0</text>
-  <text x="1640" y="744" font-family="Arial, sans-serif" font-size="17" fill="#5A5A5A" text-anchor="middle">Llama 3 Community</text>
+  <text x="1640" y="744" font-family="Arial, sans-serif" font-size="17" fill="#5A5A5A" text-anchor="middle">mDeBERTa MIT</text>
 
   <!-- Row 9: Cost -->
   <rect x="80" y="764" width="500" height="56" fill="#F8F8F8"/>
@@ -143,7 +143,7 @@
   <rect x="1440" y="764" width="400" height="56" fill="#FFFFFF"/>
   <text x="100" y="800" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#0A0A0A">Cost / 1M requests</text>
   <text x="740" y="800" font-family="Arial Black, sans-serif" font-size="22" font-weight="900" fill="#FF6B35" text-anchor="middle">$0 self-hosted</text>
-  <text x="1030" y="800" font-family="Arial, sans-serif" font-size="17" fill="#C0392B" text-anchor="middle">per-seat license</text>
+  <text x="1030" y="800" font-family="Arial, sans-serif" font-size="17" fill="#C0392B" text-anchor="middle">volume-tier API</text>
   <text x="1300" y="800" font-family="Arial, sans-serif" font-size="17" fill="#5A5A5A" text-anchor="middle">$0 + compute</text>
   <text x="1640" y="800" font-family="Arial, sans-serif" font-size="17" fill="#5A5A5A" text-anchor="middle">$0 + compute</text>
 

@@ -91,15 +91,15 @@ Full table: [docs/competitive_comparison.md](docs/competitive_comparison.md)
 
 | Property | SOUF AI v0.5f | Lakera Guard | NeMo Guardrails | Prompt Guard 2 (86M) |
 |---|---|---|---|---|
-| Latency P50 | **0.051 ms** | ~40–80 ms (net) | ~5–50 ms | ~10–30 ms |
+| Latency P50 | **0.051 ms** | not published | not published | 92.4 ms (A100) |
 | Offline / air-gapped | **✅** | ❌ SaaS | ✅ | ✅ |
 | Throughput | **17,553 req/s (1 core)** | rate-limited | LLM-rail-bound | ~100–300 req/s |
 | Built-in HIPAA pack | **✅ F1=1.000** | guides only | custom Colang | ❌ |
 | Built-in PCI-DSS pack | **✅ F1=1.000** | partial | custom Colang | ❌ |
 | Audit chain (Ed25519, SHA-256) | **✅ tamper-evident** | request logs | trace logs | ❌ |
 | Wilson 95% CI on accuracy | **✅** | ❌ no public CIs | ❌ | ❌ |
-| License | **MIT** | Commercial closed | Apache 2.0 | Llama 3 Community |
-| Cost / 1M requests | **$0 (self-hosted)** | per-seat license | $0 + compute | $0 + compute |
+| License | **MIT** | Commercial closed | Apache 2.0 | mDeBERTa MIT |
+| Cost / 1M requests | **$0 (self-hosted)** | volume-tier API | $0 + compute | $0 + compute |
 
 Sources: Lakera Guard public docs · NVIDIA NeMo Guardrails GitHub · Meta Prompt Guard model card. SOUF AI numbers measured locally (`scripts/run_all_benchmarks.py`).
 
