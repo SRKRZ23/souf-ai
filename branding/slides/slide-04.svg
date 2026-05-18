@@ -54,8 +54,8 @@
 
   <!-- Box 4: PatternSets -->
   <rect x="1200" y="248" width="290" height="100" rx="6" fill="#F4F4F4" stroke="#FF6B35" stroke-width="2"/>
-  <text x="1345" y="283" font-family="Arial Black, Arial, sans-serif" font-size="15" font-weight="900" fill="#FF6B35" text-anchor="middle">14 PATTERNSETS</text>
-  <text x="1345" y="305" font-family="Arial Black, Arial, sans-serif" font-size="15" font-weight="900" fill="#0A0A0A" text-anchor="middle">254+ REGEX</text>
+  <text x="1345" y="283" font-family="Arial Black, Arial, sans-serif" font-size="15" font-weight="900" fill="#FF6B35" text-anchor="middle">16 PATTERNSETS</text>
+  <text x="1345" y="305" font-family="Arial Black, Arial, sans-serif" font-size="15" font-weight="900" fill="#0A0A0A" text-anchor="middle">337 REGEX</text>
   <text x="1345" y="332" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#5A5A5A" text-anchor="middle">HIPAA · PCI · Encoding attacks</text>
 
   <!-- Arrow 4 -->

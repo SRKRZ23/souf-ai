@@ -62,7 +62,7 @@
   <text x="970" y="480" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="#FFFFFF">✓  Upstream PR submitted to veeainc/lobstertrap</text>
   <text x="970" y="512" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="#FFFFFF">✓  MIT licensed — zero vendor lock-in</text>
   <text x="970" y="544" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="#FFFFFF">✓  NFKC normalize + 54 confusable codepoints</text>
-  <text x="970" y="576" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="#FFFFFF">✓  14 PatternSets · 254+ regex patterns</text>
+  <text x="970" y="576" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="#FFFFFF">✓  16 PatternSets · 337 regex patterns</text>
 
   <rect x="970" y="594" width="860" height="2" fill="#FF8A5B"/>
   <text x="1400" y="626" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#FFE0D0" text-anchor="middle">github.com/SRKRZ23/souf-ai · scripts/run_all_benchmarks.py</text>
