@@ -8,6 +8,9 @@
 **🧪 Reproduce in 5 seconds:** `python3 scripts/run_all_benchmarks.py` → 231 prompts, F1=1.000
 **📊 Pitch deck (9 slides):** [submissions/SOUF_AI_pitch_deck.pdf](submissions/SOUF_AI_pitch_deck.pdf)
 
+**📣 Featured in build-in-public posts (4-of-5 hackathon week, $242K+ prize-eligibility):**
+[LinkedIn long-form](https://www.linkedin.com/posts/sardor-razikov-569a5327b_atlas-enterprise-multi-agent-system-ai-activity-7462457002317975552-ADGR) · [X 5-tweet thread](https://x.com/SardorRazi99093/status/2056690128613970060) · [Facebook](https://www.facebook.com/share/p/1Nr4M2WhUG/)
+
 ![SOUF AI banner](branding/banner_cover.png)
 
 ### Architecture
