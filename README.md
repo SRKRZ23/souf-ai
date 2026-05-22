@@ -1,10 +1,12 @@
 # SOUF AI
 
-> Rule packs + detector patches extending Veea's Lobster Trap to close critical gaps in baseline policy.
+> **Veea's Lobster Trap blocks 19 of 48 prompt-injection attacks. SOUF AI blocks all 48 in 0.079 ms.**
+
+**231 adversarial prompts tested across in-distribution + out-of-distribution + Cyrillic/Greek/fullwidth Unicode encoding attacks. F1 = 1.000. Zero false positives on benign traffic.** Drop-in rule packs that extend Lobster Trap without breaking existing policy.
 
 **TechEx Hackathon 2026 · Track 1: Agent Security & AI Governance · Veea**
 
-**🎥 Video walkthrough (3 min):** [https://youtu.be/IwLt1OTehcQ](https://youtu.be/IwLt1OTehcQ)
+**🎥 3-minute walkthrough:** [https://youtu.be/IwLt1OTehcQ](https://youtu.be/IwLt1OTehcQ)
 **🧪 Reproduce in 5 seconds:** `python3 scripts/run_all_benchmarks.py` → 231 prompts, F1=1.000
 **📊 Pitch deck (9 slides):** [submissions/SOUF_AI_pitch_deck.pdf](submissions/SOUF_AI_pitch_deck.pdf)
 
