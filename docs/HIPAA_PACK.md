@@ -129,4 +129,4 @@ Statistical rigor pattern (bootstrap CIs, paired comparison, full reproducibilit
 
 ## Author
 
-Sardor Razikov · independent AI safety researcher · Tashkent · ORCID 0009-0007-0731-4247 · MIT-licensed.
+Sardor Razikov · independent AI safety researcher · ORCID 0009-0007-0731-4247 · MIT-licensed.

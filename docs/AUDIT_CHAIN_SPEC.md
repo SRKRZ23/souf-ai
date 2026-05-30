@@ -202,7 +202,7 @@ The tampered entry is detected; the other entries (whose signatures were not mod
 
 ## Author
 
-Sardor Razikov · Tashkent · ORCID 0009-0007-0731-4247.
+Sardor Razikov · ORCID 0009-0007-0731-4247.
 
 ## License
 
