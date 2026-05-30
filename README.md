@@ -230,7 +230,7 @@ souf-ai/
 
 ## Author
 
-Sardor Razikov · independent AI safety researcher · Tashkent, Uzbekistan
+Sardor Razikov · independent AI safety researcher · 
 - ORCID: [0009-0007-0731-4247](https://orcid.org/0009-0007-0731-4247)
 - ECB v1 (methodology source): [10.5281/zenodo.19791329](https://doi.org/10.5281/zenodo.19791329)
 - GitHub: [@SRKRZ23](https://github.com/SRKRZ23)

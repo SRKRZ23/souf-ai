@@ -11,7 +11,7 @@
 
 **Visual:** `branding/slides/slide-01.png` (title slide — SOUF AI logo + tagline)
 **Voiceover:**
-> "SOUF AI. Sub-millisecond LLM governance built solo from Tashkent. F1 of one point zero on 231 adversarial prompts. Zero false positives across five benchmarks."
+> "SOUF AI. Sub-millisecond LLM governance built solo. F1 of one point zero on 231 adversarial prompts. Zero false positives across five benchmarks."
 
 ---
 
@@ -95,7 +95,7 @@ Total: 231 prompts | ALL PASS | 3.3s
 
 **Visual:** `branding/slides/slide-08.png` (final CTA — GitHub URL, lablab team URL)
 **Voiceover:**
-> "SOUF AI. Built solo from Tashkent. Repo at github dot com slash S R K R Z 2 3 slash souf hyphen A I. Lobster Trap is the floor. We're the ceiling."
+> "SOUF AI. Built solo. Repo at github dot com slash S R K R Z 2 3 slash souf hyphen A I. Lobster Trap is the floor. We're the ceiling."
 
 ---
 
